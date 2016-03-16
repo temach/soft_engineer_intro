@@ -1,4 +1,4 @@
-\documentclass[twoside,a4paper,12pt]{article}
+\documentclass[a4paper,12pt]{article}
 
 % Packages required by doxygen
 \usepackage[export]{adjustbox} % also loads graphicx
@@ -18,7 +18,6 @@
 \usepackage[scaled=.90]{helvet}
 \usepackage{courier}
 \usepackage{amssymb}
-\usepackage{sectsty}
 
 % Page & text layout
 \usepackage{geometry}
@@ -56,11 +55,11 @@
 \setcounter{secnumdepth}{5}
 \makeindex
 
-% change style of title in \section{}
+% change style of titles in \section{}
 \usepackage{titlesec}
-\titleformat*{\section}{\Large\bfseries\center}
-\titlelabel{\thetitle.  \enspace}
-\titleformat*{\subsection}{\Large\raggedright}
+\titleformat{\section}[hang]{\Large\bfseries\center}{\thetitle.}{1em}{}
+\titleformat{\subsection}[hang]{\large\normalfont\raggedright}{\thetitle.}{1em}{\underline}
+\titleformat{\subsubsection}[hang]{\normalsize\normalfont\raggedright}{\thetitle.}{1pt}{}
 
 % Packages for text layout in normal mode
 % \usepackage[parfill]{parskip} % автоматом делает пустые линии между параграфами, там где они есть в тексте
@@ -70,6 +69,16 @@
 \setlength\parindent{0.9cm} % size of indent for every paragraph
 \usepackage{csquotes}% превратить " " в красивые двойные кавычки
 \MakeOuterQuote{"}
+
+
+% this makes items spacing single-spaced in enumerations.
+\newenvironment{my_enumerate}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}}{\end{enumerate}
+}
+
 
 % Custom commands
 
@@ -112,6 +121,7 @@
 
 \newpage
 \section{Требования к програмному изделию}
+\input{demands_from_program}
 
 
 \section{Требования к програмной документации}
