@@ -86,6 +86,7 @@
 % Custom packages
 \usepackage{pdfpages}
 
+\makeindex
 
 %===== C O N T E N T S =====
 
@@ -106,7 +107,6 @@
 \pagenumbering{arabic}
 
 % --- add my custom headers ---
-
 \newpage
 \section{Введение}
 \input{introduction}
@@ -150,11 +150,10 @@
 \newpage
 \section{Приложение 3. Изображение пользовательского интерфейса.}
 
-
 % Index
 \newpage
 \phantomsection
-\addcontentsline{toc}{section}{Алфавитный указатель}
+\addcontentsline{toc}{section}{Алфавитный указатель}    
 \printindex
 
 \end{document}
