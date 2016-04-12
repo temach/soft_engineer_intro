@@ -1,4 +1,9 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[
+%a4paper,12pt
+encoding=utf8
+]{eskd}
+
+% \usepackage{eskdappsheet}
 
 % Packages required by doxygen
 \usepackage[export]{adjustbox} % also loads graphicx
@@ -12,6 +17,7 @@
 % NLS support packages
 \usepackage[T2A]{fontenc}
 \usepackage[russian]{babel}
+\usepackage{pscyr}
 
 % Font selection
 \usepackage[T1]{fontenc}
@@ -20,14 +26,14 @@
 \usepackage{amssymb}
 
 % Page & text layout
-\usepackage{geometry}
-\geometry{%
-  a4paper,%
-  top=2.5cm,%
-  bottom=2.5cm,%
-  left=2.5cm,%
-  right=2.5cm%
-}
+% \usepackage{geometry}
+% \geometry{%
+%   a4paper,%
+%   top=2.5cm,%
+%   bottom=4.5cm,%
+%   left=2.5cm,%
+%   right=2.5cm%
+% }
 %\setlength{\emergencystretch}{15pt}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0.2cm}
@@ -81,7 +87,6 @@
 
 
 % Custom commands
-
 
 % Custom packages
 \usepackage{pdfpages}
