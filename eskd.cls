@@ -127,49 +127,64 @@ format (V.Fyodorov@tltsu.ru)]
 
 
 
-% \newsavebox{\eskd@border}
-% 
-% \newcommand{\make@eskd@border}{%
-%    \savebox{\eskd@border}(0,0){%
-%       \unitlength 1mm
-%       \begin{picture}(0,0)(0,\eskdheight)
-%          \linethickness{\eskd@thick mm}
-%          \put(0,0){\line(1,0){185}}
-%          \put(0,\eskdheight){\line(1,0){185}}
-%          \put(0,0){\line(0,1){\eskdheight}}
-%          \put(185,0){\line(0,1){\eskdheight}}
-%          \put(-\eskd@half@thick,0){\line(1,0){\eskd@half@thick}}
-%          \put(-\eskd@half@thick,\eskdheight){\line(1,0){\eskd@half@thick}}
-%          \put(185,0){\line(1,0){\eskd@half@thick}}
-%          \put(185,\eskdheight){\line(1,0){\eskd@half@thick}}
-%       \end{picture}
-% }}
+\newsavebox{\eskd@border}
+
+\newcommand{\make@eskd@border}{%
+   \savebox{\eskd@border}(0,0){%
+      \unitlength 1mm
+      \begin{picture}(0,0)(0,\eskdheight)
+         \linethickness{\eskd@thick mm}
+         \put(0,0){\line(1,0){185}}
+         \put(0,\eskdheight){\line(1,0){185}}
+         \put(0,0){\line(0,1){\eskdheight}}
+         \put(185,0){\line(0,1){\eskdheight}}
+         \put(-\eskd@half@thick,0){\line(1,0){\eskd@half@thick}}
+         \put(-\eskd@half@thick,\eskdheight){\line(1,0){\eskd@half@thick}}
+         \put(185,0){\line(1,0){\eskd@half@thick}}
+         \put(185,\eskdheight){\line(1,0){\eskd@half@thick}}
+      \end{picture}
+}}
 
 
 
 \newsavebox{\eskd@common@left}
+
+\newcommand{\hh}{20} % convenience variable height
+\newcommand{\hw}{150} % convenience variable width
 
 \newcommand{\make@eskd@common@left}{%
   \savebox{\eskd@common@left}(0,0){%
     \unitlength 1mm %
     \begin{picture}(0,0)(0,0)
       \linethickness{\eskd@thick mm}
-      \put(7,0){\line(0,1){15}}
-      \put(17,0){\line(0,1){15}}
-      \put(40,0){\line(0,1){15}}
-      \put(55,0){\line(0,1){15}}
-      \put(0,5){\line(1,0){65}}
-      \put(0,15){\line(1,0){65}}
-      % artem added 1 line below
-      \put(0,0){\line(1,0){65}}
+      % y axis
+      \put(0,0){\line(0,1){\hh}}
+      \put(150,0){\line(0,1){\hh}}
+      % x axis
+      \put(0,0){\line(1,0){\hw}}
+      \put(0,20){\line(1,0){\hw}}
       \linethickness{\eskd@thin mm}
-      \put(0,10){\line(1,0){65}}
-      \put(3.5,2.5){\makebox(0,0){\footnotesize\itshape\textar{Изм.}}}
-      \put(12,2.5){\makebox(0,0){\itshape\textar{Лист}}}
-      \put(28.5,2.5){\makebox(0,0){\itshape
-          \textar{\textnumero\ докум.}}}
-      \put(47.5,2.5){\makebox(0,0){\itshape\textar{Подп.}}}
-      \put(60,2.5){\makebox(0,0){\small\itshape\textar{Дата}}}
+      % y thin
+      \put(30,0){\line(0,1){\hh}}
+      \put(60,0){\line(0,1){\hh}}
+      \put(90,0){\line(0,1){\hh}}
+      \put(120,0){\line(0,1){\hh}}
+      % x thin
+      \put(0,5){\line(1,0){\hw}}
+      \put(0,10){\line(1,0){\hw}}
+      \put(0,15){\line(1,0){\hw}}
+      % labels, first row left -> right
+      \put(4,12){\makebox(0,0)[l]{\textar{Изм.}}}
+      \put(34,12){\makebox(0,0)[l]{\textar{Лист}}}
+      \put(64,12){\makebox(0,0)[l]{\textar{\textnumero докум.}}}
+      \put(94,12){\makebox(0,0)[l]{\textar{Подп.}}}
+      \put(124,12){\makebox(0,0)[l]{\textar{Дата}}}
+      % labels second row, left -> right
+      \put(4,2){\makebox(0,0)[l]{\textar{Инв. \textnumero подл.}}}
+      \put(34,2){\makebox(0,0)[l]{\textar{Подп. и дата}}}
+      \put(64,2){\makebox(0,0)[l]{\textar{Взам. инв. \textnumero}}}
+      \put(94,2){\makebox(0,0)[l]{\textar{Инв. \textnumero дyбл.}}}
+      \put(124,2){\makebox(0,0)[l]{\textar{Подп. и дата}}}
     \end{picture}
     }}
 
@@ -208,6 +223,64 @@ format (V.Fyodorov@tltsu.ru)]
     \end{picture}
     }}
 
+\newcommand{\make@eskd@myhoriz@style}{%
+  \newsavebox{\eskd@myhoriz@gost}
+  % \savebox{\eskd@myhoriz@gost}{\scriptsize\textar{ГОСТ 2.104-68
+  %     Форма 2\ifeskd@twoside б\else a\fi}}
+  \newsavebox{\eskd@myhoriz@signature}
+  \savebox{\eskd@myhoriz@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
+  \fancypagestyle{myhorizontaltable}{%
+  \fancyhf{}
+  \fancyhead[L]{%
+    \unitlength 1mm
+    \begin{picture}(0,0)(3,-6)
+      % \put(0,0){\usebox{\eskd@border}}
+      % \put(0,-\eskdheight){\usebox{\eskd@vertical@frame}}
+      \put(10,-\eskdheight){\usebox{\eskd@common@left}}
+      % \put(65,-\eskdheight){\usebox{\eskd@common@hole}}
+      % \put(175,-\eskdheight){\usebox{\eskd@common@page}}
+      % \put(0,-\eskdheight){\begin{picture}(0,0)
+      %     \put(180,4){\makebox(0,0){\large\textbf{\textar{\thepage}}}}
+      %     \put(120,7.5){\makebox(0,0){\usebox{\eskd@common@signature}}}
+      %     \put(180,11.5){\makebox(0,0){\usebox{\eskd@common@list}}}
+      %     \put(185,\ifeskd@twoside-1\else0\fi){\makebox(0,0)[rt]{%
+      %         \usebox{\eskd@common@gost}}}
+      %   \end{picture}}
+    \end{picture}
+    }
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}}
+}
+
+
+\newcommand{\make@eskd@myvert@style}{%
+  \newsavebox{\eskd@myvert@gost}
+  % \savebox{\eskd@myvert@gost}{\scriptsize\textar{ГОСТ 2.104-68
+  %     Форма 2\ifeskd@twoside б\else a\fi}}
+  \newsavebox{\eskd@myvert@signature}
+  \savebox{\eskd@myvert@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
+  \fancypagestyle{myverticaltable}{%
+  \fancyhf{}
+  \fancyhead[L]{%
+    \unitlength 1mm
+    \begin{picture}(0,0)(3,-6)
+      % \put(0,0){\usebox{\eskd@border}}
+      \put(0,-\eskdheight){\usebox{\eskd@vertical@frame}}
+      % \put(0,-\eskdheight){\usebox{\eskd@common@left}}
+      % \put(65,-\eskdheight){\usebox{\eskd@common@hole}}
+      % \put(175,-\eskdheight){\usebox{\eskd@common@page}}
+      % \put(0,-\eskdheight){\begin{picture}(0,0)
+      %     \put(180,4){\makebox(0,0){\large\textbf{\textar{\thepage}}}}
+      %     \put(120,7.5){\makebox(0,0){\usebox{\eskd@common@signature}}}
+      %     \put(180,11.5){\makebox(0,0){\usebox{\eskd@common@list}}}
+      %     \put(185,\ifeskd@twoside-1\else0\fi){\makebox(0,0)[rt]{%
+      %         \usebox{\eskd@common@gost}}}
+      %   \end{picture}}
+    \end{picture}
+    }
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}}
+}
 
 
 \newcommand{\make@eskd@common@style}{%
@@ -291,7 +364,7 @@ format (V.Fyodorov@tltsu.ru)]
     \fancyhead[L]{%
       \unitlength 1mm
       \begin{picture}(0,0)(3,-6)
-        % \put(0,0){\usebox{\eskd@border}}
+        \put(0,0){\usebox{\eskd@border}}
         \put(0,-\eskdheight){\usebox{\eskd@vertical@frame}}
         \put(0,-\eskdheight){\makebox(0,0){%
             \unitlength 1mm
@@ -474,45 +547,45 @@ format (V.Fyodorov@tltsu.ru)]
 
 \renewcommand{\maketitle}{}
 \newcommand{\eskd@maketitle}{%
-\thispagestyle{title}
-\set@eskd@bottom{55mm}
-\usefont{T2A}{far}{m}{n}
-\large
-\vspace*{1mm}
-\begin{center}
-\bfseries\Large
-\eskd@title@i
-\end{center}
-\vfill
-\centerline{\raisebox{0mm}[0mm][0mm]{\tfIII}}
-\vfill
-\begin{center}
-{\bfseries\Large
-\MakeUppercase{\eskd@title@iv}}\mbox{}\\[3mm]
-{\large\MakeUppercase{\eskd@title@vi}}
-\end{center}
+    \thispagestyle{title}
+    \set@eskd@bottom{55mm}
+    \usefont{T2A}{far}{m}{n}
+    \large
+    \vspace*{1mm}
+    \begin{center}
+        \bfseries\Large
+        \eskd@title@i
+    \end{center}
+    \vfill
+    \centerline{\raisebox{0mm}[0mm][0mm]{\tfIII}}
+    \vfill
+    \begin{center}
+        {\bfseries\Large
+            \MakeUppercase{\eskd@title@iv}}\mbox{}\\[3mm]
+            {\large\MakeUppercase{\eskd@title@vi}}
+        \end{center}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vfill
-\unitlength\textwidth\begin{picture}(0,0)
-\put(0,0){\makebox(0,0)[l]{\hyphenpenalty=10000 %
-\begin{tabular}{@{\hspace{5mm}}p{80mm}@{\hspace{10mm}}p{80mm}}
-\raggedright\eskd@agr@list &{\raggedright\eskd@author@list}\\
-\end{tabular}
-}}
-\end{picture}
-\vfill\vfill
-\begin{center}
-  \eskd@title@bottom
-\end{center}
-\newpage
+        \vfill
+        \unitlength\textwidth\begin{picture}(0,0)
+            \put(0,0){\makebox(0,0)[l]{\hyphenpenalty=10000 %
+                \begin{tabular}{@{\hspace{5mm}}p{80mm}@{\hspace{10mm}}p{80mm}}
+                    \raggedright\eskd@agr@list &{\raggedright\eskd@author@list}\\
+                \end{tabular}
+            }}
+        \end{picture}
+        \vfill\vfill
+        \begin{center}
+            \eskd@title@bottom
+        \end{center}
+        \newpage
 
-\ifeskd@twoside
-\thispagestyle{empty}
-\cleardoublepage
-\fi
+        \ifeskd@twoside
+        \thispagestyle{empty}
+        \cleardoublepage
+        \fi
 
-\thispagestyle{first}
-\set@eskd@bottom{30mm}
+        \thispagestyle{first}
+        \set@eskd@bottom{30mm}
 
 }
 
@@ -553,19 +626,27 @@ format (V.Fyodorov@tltsu.ru)]
   \make@eskd@title@style
   \make@eskd@common@style
 
-  \pagestyle{common}
-  \inputencoding{\eskdencoding}
-  \ifeskd@title\eskd@maketitle
-  \else\thispagestyle{first}\set@eskd@bottom{30mm}\fi
+  \make@eskd@myvert@style
+  \make@eskd@myhoriz@style
 
-  % \renewcommand{\make@eskd@border}{}
-  \renewcommand{\make@eskd@vertical@frame}{}
-  \renewcommand{\make@eskd@common@left}{}
-  \renewcommand{\make@eskd@common@hole}{}
-  \renewcommand{\make@eskd@common@page}{}
-  \renewcommand{\make@eskd@first@style}{}
-  \renewcommand{\make@eskd@title@style}{}
-  \renewcommand{\make@eskd@common@style}{}
-  \renewcommand{\eskd@maketitle}{}
+  % \pagestyle{common}
+  % \inputencoding{\eskdencoding}
+  % \ifeskd@title\eskd@maketitle
+  % \else\thispagestyle{first}\set@eskd@bottom{30mm}\fi
+  % \thispagestyle{first}\set@eskd@bottom{30mm}
+  % \thispagestyle{myhoriz}\set@eskd@bottom{30mm}
+  \inputencoding{\eskdencoding}
+  \set@eskd@bottom{70mm}
+  \pagestyle{common}
+
+  %\renewcommand{\make@eskd@border}{}
+  %\renewcommand{\make@eskd@vertical@frame}{}
+  %\renewcommand{\make@eskd@common@left}{}
+  %\renewcommand{\make@eskd@common@hole}{}
+  %\renewcommand{\make@eskd@common@page}{}
+  %\renewcommand{\make@eskd@first@style}{}
+  %\renewcommand{\make@eskd@title@style}{}
+  %\renewcommand{\make@eskd@common@style}{}
+  %\renewcommand{\eskd@maketitle}{}
   \relax
 }
