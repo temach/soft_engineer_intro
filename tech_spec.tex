@@ -95,14 +95,21 @@ encoding=utf8
 
 %===== C O N T E N T S =====
 
+
 \begin{document}
+
+% Overall we want horizontal tables only
+\pagestyle{myhorizontaltable}
 
 % Titlepage & ToC
 \pagenumbering{roman}
-\input{title_page}
 
-% second page which is 80% like titlepage
-\input{second_title_page}
+% First 2 pages need vertical table
+\input{title_page}\thispagestyle{myverticaltable}
+
+% First 2 pages need vertical table
+% this page is 80% like titlepage
+\input{second_title_page}\thispagestyle{myverticaltable}
 
 % some water filling text, that is pointless but adds text
 \input{annotation}
