@@ -111,13 +111,13 @@ format (V.Fyodorov@tltsu.ru)]
           % artem added 1 line below
           \put(0,0){\line(1,0){145}}
           \put(12.5,9.5){\makebox(0,0){\itshape
-              \textar{Инв. \textnumero\ подл.}}}
+              \textar{Инв. \textnumero \ подл.}}}
           \put(42.5,9.5){\makebox(0,0){\itshape
               \textar{Подп. и дата}}}
           \put(72.5,9.5){\makebox(0,0){\itshape
               \textar{Взам. инв. \textnumero}}}
           \put(97.5,9.5){\makebox(0,0){\itshape
-              \textar{Инв. \textnumero\ дубл.}}}
+              \textar{Инв. \textnumero \ дубл.}}}
           \put(127.5,9.5){\makebox(0,0){\itshape
               \textar{Подп. и дата}}}
                                 %
@@ -229,8 +229,9 @@ format (V.Fyodorov@tltsu.ru)]
   %     Форма 2\ifeskd@twoside б\else a\fi}}
   \newsavebox{\eskd@myhoriz@signature}
   \savebox{\eskd@myhoriz@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
+  \setlength{\headheight}{25.2pt}
   \fancypagestyle{myhorizontaltable}{%
-  \fancyhf{}
+  % \fancyhf{}
   \fancyhead[L]{%
     \unitlength 1mm
     \begin{picture}(0,0)(3,-6)
@@ -248,8 +249,11 @@ format (V.Fyodorov@tltsu.ru)]
       %   \end{picture}}
     \end{picture}
     }
+    \fancyhead[C]{\large{\bfseries\thepage \\ \textbf{RU.17701729.509000 T3 01-1}}}
+  % \fancyhead[R]{\fancyplain{}{\bfseries\thepage}}
   \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}}
+  \renewcommand{\footrulewidth}{0pt}
+  }
 }
 
 
@@ -260,7 +264,7 @@ format (V.Fyodorov@tltsu.ru)]
   \newsavebox{\eskd@myvert@signature}
   \savebox{\eskd@myvert@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
   \fancypagestyle{myverticaltable}{%
-  \fancyhf{}
+  % \fancyhf{}
   \fancyhead[L]{%
     \unitlength 1mm
     \begin{picture}(0,0)(3,-6)
@@ -637,7 +641,7 @@ format (V.Fyodorov@tltsu.ru)]
   % \thispagestyle{myhoriz}\set@eskd@bottom{30mm}
   \inputencoding{\eskdencoding}
   \set@eskd@bottom{70mm}
-  \pagestyle{common}
+  % \pagestyle{common}
 
   %\renewcommand{\make@eskd@border}{}
   %\renewcommand{\make@eskd@vertical@frame}{}
