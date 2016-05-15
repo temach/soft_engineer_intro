@@ -53,7 +53,7 @@ format (V.Fyodorov@tltsu.ru)]
 \RequirePackage{pscyr}
 \renewcommand{\rmdefault}{far}
 
-\RequirePackage[left=24mm,right=11mm,top=10mm,footskip=25pt,headsep=10pt]{geometry}
+\RequirePackage[left=24mm,right=11mm,top=16mm,footskip=25pt,headsep=10pt]{geometry}
 
 \newcommand{\set@eskd@bottom}[1]{%
   \setlength{\textheight}{\eskdheight mm}
@@ -209,15 +209,18 @@ format (V.Fyodorov@tltsu.ru)]
 Изм.&из\-ме\-нен\-ных&за\-ме\-нен\-ных&но\-вых&%
 ан\-ну\-ли\-ро\-ван\-ных&
 Всего листов (страниц)
-в докум.&\No\ докум.&Вхо\-дя\-щий \No\
+в докум.&\textnumero\ докум.&Вхо\-дя\-щий \textnumero\
 сопроводительного докум. и дата&Подпись&Дата\\\hline
-\vbox{\vspace{\eskdheight mm}\vspace{-6cm}}&&&&&&&&&\\\hline
+\vbox{\vspace{\eskdheight mm}\vspace{-9cm}}&&&&&&&&&\\\hline
 \end{tabular}
 }
 }
 
 
 \AtBeginDocument{%
+  % clear settings for header and footer
+  \fancyhf{}
+
   \set@eskd@bottom{55mm}
 
   \make@eskd@vertical
