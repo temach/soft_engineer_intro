@@ -42,7 +42,6 @@ format (V.Fyodorov@tltsu.ru)]
 
 \LoadClass[a4paper]{article}
 
-
 \RequirePackage[\eskdencoding]{inputenc}
 \RequirePackage[russian]{babel}
 \RequirePackage[T2A]{fontenc}
@@ -57,16 +56,11 @@ format (V.Fyodorov@tltsu.ru)]
 \RequirePackage[left=24mm,right=11mm%
 ,top=10mm,nofoot,headsep=0pt]{geometry}
 
-
-
 \newcommand{\set@eskd@bottom}[1]{%
   \setlength{\textheight}{\eskdheight mm}
   \addtolength{\textheight}{-#1}
   \addtolength{\textheight}{5 mm}
   }
-
-
-
 
 
 \newsavebox{\eskd@vertical@frame}
@@ -105,24 +99,6 @@ format (V.Fyodorov@tltsu.ru)]
       }}
 
 
-
-\newsavebox{\eskd@border}
-
-\newcommand{\make@eskd@border}{%
-   \savebox{\eskd@border}(0,0){%
-      \unitlength 1mm
-      \begin{picture}(0,0)(0,\eskdheight)
-         \linethickness{\eskd@thick mm}
-         \put(0,0){\line(1,0){185}}
-         \put(0,\eskdheight){\line(1,0){185}}
-         \put(0,0){\line(0,1){\eskdheight}}
-         \put(185,0){\line(0,1){\eskdheight}}
-         \put(-\eskd@half@thick,0){\line(1,0){\eskd@half@thick}}
-         \put(-\eskd@half@thick,\eskdheight){\line(1,0){\eskd@half@thick}}
-         \put(185,0){\line(1,0){\eskd@half@thick}}
-         \put(185,\eskdheight){\line(1,0){\eskd@half@thick}}
-      \end{picture}
-}}
 
 
 
@@ -168,39 +144,7 @@ format (V.Fyodorov@tltsu.ru)]
     }}
 
 
-\newsavebox{\eskd@common@hole}
-\newcommand{\make@eskd@common@hole}{%
-  \savebox{\eskd@common@hole}(0,0){%
-    \unitlength 1mm
-    \begin{picture}(0,0)(0,0)
-      \linethickness{\eskd@thick mm}
-      \put(0,0){\line(0,1){15}}
-      \put(110,0){\line(0,1){15}}
-      \put(0,15){\line(1,0){110}}
-      % artem added 1 line below
-      \put(0,0){\line(1,0){110}}
-      \put(120,0){\line(0,1){15}}
-                                %
-    \end{picture}
-    }}
 
-
-
-\newsavebox{\eskd@common@page}
-
-\newcommand{\make@eskd@common@page}{%
-  \savebox{\eskd@common@page}(0,0){%
-    \unitlength 1mm
-    \begin{picture}(0,0)(0,0)
-      \linethickness{\eskd@thick mm}
-      \put(0,15){\line(1,0){10}}
-      \put(0,8){\line(1,0){10}}
-      % artem added 2 lines below
-      \put(0,0){\line(1,0){10}}
-      % \put(185,0){\line(0,1){15}}
-                                %
-    \end{picture}
-    }}
 
 \newcommand{\make@eskd@myhoriz@style}{%
   \newsavebox{\eskd@myhoriz@gost}
@@ -266,157 +210,8 @@ format (V.Fyodorov@tltsu.ru)]
 }
 
 
-\newcommand{\make@eskd@common@style}{%
-  \newsavebox{\eskd@common@list}
-  \savebox{\eskd@common@list}{\itshape
-    \textar{\ifeskd@twoside Стр.\else Лист\fi}}
-  \newsavebox{\eskd@common@gost}
-  % \savebox{\eskd@common@gost}{\scriptsize\textar{ГОСТ 2.104-68
-  %     Форма 2\ifeskd@twoside б\else a\fi}}
-  \newsavebox{\eskd@common@signature}
-  \savebox{\eskd@common@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
-  \fancypagestyle{common}{%
-  \fancyhf{}
-  \fancyhead[L]{%
-    \unitlength 1mm
-    \begin{picture}(0,0)(3,-6)
-      % \put(0,0){\usebox{\eskd@border}}
-      \put(0,-\eskdheight){\usebox{\eskd@vertical@frame}}
-      \put(0,-\eskdheight){\usebox{\eskd@common@left}}
-      \put(65,-\eskdheight){\usebox{\eskd@common@hole}}
-      \put(175,-\eskdheight){\usebox{\eskd@common@page}}
-      \put(0,-\eskdheight){\begin{picture}(0,0)
-          \put(180,4){\makebox(0,0){\large\textbf{\textar{\thepage}}}}
-          \put(120,7.5){\makebox(0,0){\usebox{\eskd@common@signature}}}
-          \put(180,11.5){\makebox(0,0){\usebox{\eskd@common@list}}}
-          \put(185,\ifeskd@twoside-1\else0\fi){\makebox(0,0)[rt]{%
-              \usebox{\eskd@common@gost}}}
-        \end{picture}}
-    \end{picture}
-    }
-  \ifeskd@twoside
-  \fancyhead[LE]{%
-    \unitlength 1mm
-    \begin{picture}(0,0)(3,-6)
-      % \put(0,0){\usebox{\eskd@border}}
-      \put(120,-\eskdheight){\usebox{\eskd@common@left}}
-      \put(10,-\eskdheight){\usebox{\eskd@common@hole}}
-      \put(0,-\eskdheight){\usebox{\eskd@common@page}}
-      \put(0,-\eskdheight){\begin{picture}(0,0)
-          \put(5,4){\makebox(0,0){\large\textbf{\textar{\thepage}}}}
-          \put(65,7.5){\makebox(0,0){\usebox{\eskd@common@signature}}}
-          \put(5,11.5){\makebox(0,0){\usebox{\eskd@common@list}}}
-          \put(185,\ifeskd@twoside-1\else0\fi){\makebox(0,0)[rt]{%
-              \usebox{\eskd@common@gost}}}
-        \end{picture}}
-    \end{picture}
-    }
-  \fi
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}}
-}
 
 
-
-
-\newcommand{\make@eskd@first@style}{%
-  \newsavebox{\eskd@first@text}
-  \savebox{\eskd@first@text}{%
-    \unitlength 1mm
-    \begin{picture}(0,0)(0,0)
-      % \put(185,-1){\makebox(0,0)[rt]{\scriptsize ГОСТ 2.104-68 Форма 2}}
-      \put(3.5,27.5){\makebox(0,0){\footnotesize\itshape Изм.}}
-      \put(12,27.5){\makebox(0,0){\itshape Лист}}
-      \put(28.5,27.5){\makebox(0,0){\itshape\textnumero\ докум.}}
-      \put(47.5,27.5){\makebox(0,0){\itshape Подп.}}
-      \put(60,27.5){\makebox(0,0){\small\itshape Дата}}
-      \put(8.5,22.5){\makebox(0,0){\itshape Разраб.}}
-      \put(8.5,17.5){\makebox(0,0){\itshape Пров.}}
-      \put(8.5,7.5){\makebox(0,0){\itshape Н. контр.}}
-      \put(8.5,2.5){\makebox(0,0){\itshape Утв.}}
-      \put(142.5,22.5){\makebox(0,0){\itshape Лит.}}
-      \put(157.5,22.5){\makebox(0,0){\itshape
-          \ifeskd@twoside Стр.\else Лист\fi}}
-      \put(175,22.5){\makebox(0,0){\itshape
-          \ifeskd@twoside Страниц\else Листов\fi}}
-
-    \end{picture}
-    }
-  \fancypagestyle{first}{%
-    \fancyhf{}
-    \fancyhead[L]{%
-      \unitlength 1mm
-      \begin{picture}(0,0)(3,-6)
-        \put(0,0){\usebox{\eskd@border}}
-        \put(0,-\eskdheight){\usebox{\eskd@vertical@frame}}
-        \put(0,-\eskdheight){\makebox(0,0){%
-            \unitlength 1mm
-            \begin{picture}(0,0)(0,0)
-              \put(157.5,17.5){\makebox(0,0){\ifthenelse
-                  {\pageref{LastPage}=1}{}{\thepage}}}
-              \put(175,17.5){\makebox(0,0){\pageref{LastPage}}}
-              \put(18,22.5){\makebox(0,0)[l]{\eskd@xiI}}
-              \put(18,17.5){\makebox(0,0)[l]{\eskd@xiII}}
-              \put(18,12.5){\makebox(0,0)[l]{\eskd@xiIII}}
-              \put(18,7.5){\makebox(0,0)[l]{\eskd@xiIV}}
-              \put(18,2.5){\makebox(0,0)[l]{\eskd@xiV}}
-              \put(67,12.5){\makebox(0,0)[l]{%
-                  \parbox{66mm}{\large\raggedright\eskd@i}}}
-              \put(125,32.5){\makebox(0,0){\LARGE\eskd@ii}}
-              \put(160,7.5){\makebox(0,0){\eskd@ix}}
-              \put(8.5,12.5){\makebox(0,0){\itshape\eskd@x}}
-              \linethickness{\eskd@thick mm}
-              \put(7,25){\line(0,1){15}}
-              \put(17,0){\line(0,1){40}}
-              \put(40,0){\line(0,1){40}}
-              \put(55,0){\line(0,1){40}}
-              \put(65,0){\line(0,1){40}}
-              \put(135,0){\line(0,1){25}}
-              \put(140,15){\line(0,1){5}}
-              \put(145,15){\line(0,1){5}}
-              \put(150,15){\line(0,1){10}}
-              \put(165,15){\line(0,1){10}}
-              \put(0,40){\line(1,0){185}}
-              \put(0,30){\line(1,0){65}}
-              \put(0,25){\line(1,0){185}}
-              \put(135,20){\line(1,0){50}}
-              \put(135,15){\line(1,0){50}}
-              \linethickness{\eskd@thin mm}
-              \put(0,35){\line(1,0){65}}
-              \multiput(0,5)(0,5){4}{\line(1,0){65}}
-              \put(0,0){\usebox{\eskd@first@text}}
-                                %
-            \end{picture}
-            }}
-      \end{picture}
-      }
-    \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}}
-  }
-
-\newcommand{\make@eskd@title@style}{%
-  \newsavebox{\eskd@title@text}
-  \savebox{\eskd@title@text}{\scriptsize\textar{Ф. 1288}}
-  \newsavebox{\eskd@agr}
-  \savebox{\eskd@agr}{\usefont{T2A}{far}{b}{n}\Large Согласовано}
-  \newsavebox{\eskd@appr}
-  \savebox{\eskd@appr}{\usefont{T2A}{far}{b}{n}\Large Утверждаю}
-  \fancypagestyle{title}{%
-    \fancyhf{}
-    \fancyhead[L]{%
-      \unitlength 1mm
-      \begin{picture}(0,0)(3,-6)
-        % \put(0,0){\usebox{\eskd@border}}
-        \put(0,-\eskdheight){\usebox{\eskd@vertical@frame}}
-        \put(185,-\eskdheight){%
-          \begin{picture}(0,0)
-            \put(0,-1){\makebox(0,0)[rt]{\usebox{\eskd@title@text}}}
-          \end{picture}}
-      \end{picture}
-      }
-    \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}}
-  }
 
 
 \newcommand{\eskd@i}{}
