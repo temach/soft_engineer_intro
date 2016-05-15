@@ -1,5 +1,9 @@
 # Ignore everything
-*
+*.toc
+*.log
+*.idx
+*.aux
+*.synctex.gz
 
 # But not these files...
 !.gitignore
