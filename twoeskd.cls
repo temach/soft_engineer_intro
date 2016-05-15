@@ -53,7 +53,7 @@ format (V.Fyodorov@tltsu.ru)]
 \RequirePackage{pscyr}
 \renewcommand{\rmdefault}{far}
 
-\RequirePackage[left=24mm,right=11mm,top=10mm,headsep=5pt]{geometry}
+\RequirePackage[left=24mm,right=11mm,top=10mm,footskip=9pt,headsep=10pt]{geometry}
 
 \newcommand{\set@eskd@bottom}[1]{%
   \setlength{\textheight}{\eskdheight mm}
@@ -147,28 +147,20 @@ format (V.Fyodorov@tltsu.ru)]
 
 \newcommand{\make@eskd@myhoriz@style}{%
   \newsavebox{\eskd@myhoriz@signature}
-  \savebox{\eskd@myhoriz@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
+  \savebox{\eskd@myhoriz@signature}{{\inputencoding{\eskdencoding}\eskd@typeid}}
   \setlength{\headheight}{30.2pt}
   \fancypagestyle{myhorizontaltable}{%
   % \fancyhf{}
   \fancyhead[L]{%
     \unitlength 1mm
     \begin{picture}(0,0)(3,-6)
-      % \put(0,0){\usebox{\eskd@border}}
-      % \put(0,-\eskdheight){\usebox{\eskd@vertical@frame}}
       \put(10,-\eskdheight){\usebox{\eskd@common@left}}
-      % \put(65,-\eskdheight){\usebox{\eskd@common@hole}}
-      % \put(175,-\eskdheight){\usebox{\eskd@common@page}}
-      % \put(0,-\eskdheight){\begin{picture}(0,0)
-      %     \put(180,4){\makebox(0,0){\large\textbf{\textar{\thepage}}}}
-      %     \put(120,7.5){\makebox(0,0){\usebox{\eskd@common@signature}}}
-      %     \put(180,11.5){\makebox(0,0){\usebox{\eskd@common@list}}}
-      %     \put(185,\ifeskd@twoside-1\else0\fi){\makebox(0,0)[rt]{%
-      %         \usebox{\eskd@common@gost}}}
-      %   \end{picture}}
+      \put(0,-\eskdheight){\begin{picture}(0,0)
+           \put(120,7.5){\makebox(0,0){\usebox{\eskd@myhoriz@signature}}}
+         \end{picture}}
     \end{picture}
     }
-    \fancyhead[C]{\large{\bfseries\thepage \\ \textbf{RU.17701729.509000 T3 01-1}}}
+    % \fancyhead[C]{\large{\bfseries\thepage \\ \textbf{RU.17701729.509000 T3 01-1}}}
   % \fancyhead[R]{\fancyplain{}{\bfseries\thepage}}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
@@ -178,10 +170,8 @@ format (V.Fyodorov@tltsu.ru)]
 
 \newcommand{\make@eskd@myvert@style}{%
   \newsavebox{\eskd@myvert@gost}
-  % \savebox{\eskd@myvert@gost}{\scriptsize\textar{ГОСТ 2.104-68
-  %     Форма 2\ifeskd@twoside б\else a\fi}}
   \newsavebox{\eskd@myvert@signature}
-  \savebox{\eskd@myvert@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
+  \savebox{\eskd@myvert@signature}{{\inputencoding{\eskdencoding}\eskd@typeid}}
   \fancypagestyle{myverticaltable}{%
   % \fancyhf{}
   \fancyhead[L]{%
@@ -189,16 +179,9 @@ format (V.Fyodorov@tltsu.ru)]
     \begin{picture}(0,0)(3,-6)
       % \put(0,0){\usebox{\eskd@border}}
       \put(0,-\eskdheight){\usebox{\eskd@vertical@frame}}
-      % \put(0,-\eskdheight){\usebox{\eskd@common@left}}
-      % \put(65,-\eskdheight){\usebox{\eskd@common@hole}}
-      % \put(175,-\eskdheight){\usebox{\eskd@common@page}}
-      % \put(0,-\eskdheight){\begin{picture}(0,0)
-      %     \put(180,4){\makebox(0,0){\large\textbf{\textar{\thepage}}}}
-      %     \put(120,7.5){\makebox(0,0){\usebox{\eskd@common@signature}}}
-      %     \put(180,11.5){\makebox(0,0){\usebox{\eskd@common@list}}}
-      %     \put(185,\ifeskd@twoside-1\else0\fi){\makebox(0,0)[rt]{%
-      %         \usebox{\eskd@common@gost}}}
-      %   \end{picture}}
+      \put(0,-\eskdheight){\begin{picture}(0,0)
+           \put(120,7.5){\makebox(0,0){\usebox{\eskd@myvert@signature}}}
+         \end{picture}}
     \end{picture}
     }
   \renewcommand{\headrulewidth}{0pt}
@@ -207,122 +190,9 @@ format (V.Fyodorov@tltsu.ru)]
 
 
 
-
-
 % Will put your work type id ("RU.17701729.509000 ТЗ 01-1-ЛУ") into all tables
 \newcommand{\eskd@typeid}{}
 \newcommand{\workTypeId}[1]{\renewcommand{\eskd@typeid}{#1}}
-
-\newcommand{\eskd@i}{}
-\newcommand{\docName}[1]{\renewcommand{\eskd@i}{#1}}
-\newcommand{\fI}{\docName}
-
-\newcommand{\eskd@ii}{}
-\newcommand{\docSignature}[1]{\renewcommand{\eskd@ii}{#1}}
-\newcommand{\fII}[1]{\renewcommand{\eskd@ii}{#1}}
-
-\newcommand{\eskd@ix}{}
-\newcommand{\fIX}[1]{\renewcommand{\eskd@ix}{#1}}
-\newcommand{\docLabel}[1]{\renewcommand{\eskd@ix}{#1}}
-
-\newcommand{\eskd@x}{}
-\newcommand{\middleLabel}[1]{\renewcommand{\eskd@x}{#1}}
-\newcommand{\fX}[1]{\renewcommand{\eskd@x}{#1}}
-
-\newcommand{\eskd@xiI}{}
-\newcommand{\docAuthor}[1]{\renewcommand{\eskd@xiI}{#1}}
-\newcommand{\fXIi}[1]{\renewcommand{\eskd@xiI}{#1}}
-
-\newcommand{\eskd@xiII}{}
-\newcommand{\docChecker}[1]{\renewcommand{\eskd@xiII}{#1}}
-\newcommand{\fXIii}[1]{\renewcommand{\eskd@xiII}{#1}}
-
-\newcommand{\eskd@xiIII}{}
-\newcommand{\middleName}[1]{\renewcommand{\eskd@xiIII}{#1}}
-\newcommand{\fXIiii}[1]{\renewcommand{\eskd@xiIII}{#1}}
-
-\newcommand{\eskd@xiIV}{}
-\newcommand{\normController}[1]{\renewcommand{\eskd@xiIV}{#1}}
-\newcommand{\fXIiv}[1]{\renewcommand{\eskd@xiIV}{#1}}
-
-\newcommand{\eskd@xiV}{}
-\newcommand{\approvedBy}[1]{\renewcommand{\eskd@xiV}{#1}}
-\newcommand{\fXIv}[1]{\renewcommand{\eskd@xiV}{#1}}
-
-\newcommand{\eskd@title@i}{}
-\newcommand{\titleTop}[1]{\renewcommand{\eskd@title@i}{#1}}
-\newcommand{\tfI}[1]{\renewcommand{\eskd@title@i}{#1}}
-
-
-\newif\ifeskd@title@appr \eskd@title@apprfalse
-\newif\ifeskd@title@agr  \eskd@title@agrfalse
-
-\newcommand{\eskd@des@list}{}
-
-\newcommand{\eskd@title@iii@right@position}{}
-\newcommand{\eskd@title@iii@right@name}{}
-\newcommand{\titleApprovedBy}[2]{%
-  \renewcommand{\eskd@title@iii@right@position}{#1}
-  \renewcommand{\eskd@title@iii@right@name}{#2}
-  \eskd@title@apprtrue
-  }
-
-\newcommand{\eskd@title@iii@left@position}{}
-\newcommand{\eskd@title@iii@left@name}{}
-\xdef\eskd@agr@list{}
-\newcommand{\titleAgreedBy}[2]{%
-  \ifeskd@title@agr
-  \xdef\eskd@agr@list{\eskd@agr@list#1\par\vrule
-    depth 0.8pt height -0.4pt width31mm~#2\par
-    ''\vrule depth 0.8pt height -0.4pt width8mm''\vrule
-    depth 0.8pt height -0.4pt width20mm\ \eskdyear\ \cyrg\par\vskip 3mm}
-  \else
-  \renewcommand{\eskd@title@iii@left@position}{#1}
-  \renewcommand{\eskd@title@iii@left@name}{#2}
-  \eskd@title@agrtrue
-  \fi
-  }
-
-\xdef\eskd@author@list{}
-\newcommand{\titleDesignedBy}[2]{%
-  \xdef\eskd@author@list{\eskd@author@list#1\par\vrule
-    depth 0.8pt height -0.4pt width31mm~#2\par
-    ''\vrule depth 0.8pt height -0.4pt width8mm''\vrule
-    depth 0.8pt height -0.4pt width20mm\ \eskdyear\ \cyrg\par\vskip 3mm}
-  }
-
-\newcommand{\tfIII}{\hyphenpenalty=10000 %
-  \begin{tabular}{@{\hspace{5mm}}p{80mm}@{\hspace{10mm}}p{80mm}}%
-    \ifeskd@title@agr  \hspace{15mm}\usebox{\eskd@agr}\fi &%
-    \ifeskd@title@appr \hspace{15mm}\usebox{\eskd@appr}\fi \\[3mm]
-    \ifeskd@title@agr{\raggedright \eskd@title@iii@left@position}\fi &%
-    \ifeskd@title@appr{\raggedright
-      \eskd@title@iii@right@position}\fi\\[3mm]
-    \ifeskd@title@agr \rule[-1mm]{31mm}{0.4pt}~%
-    \eskd@title@iii@left@name \fi &%
-    \ifeskd@title@appr \rule[-1mm]{31mm}{0.4pt}~%
-    \eskd@title@iii@right@name \fi\\[3mm]
-    \ifeskd@title@agr ''\rule[-1mm]{8mm}{0.4pt}''\rule[-1mm]{20mm}{0.4pt}
-    \eskdyear\ \cyrg\fi &%
-    \ifeskd@title@appr ''\rule[-1mm]{8mm}{0.4pt}''\rule[-1mm]{20mm}{0.4pt}
-    \eskdyear\ \cyrg\fi
-  \end{tabular}
-  }
-
-\newcommand{\eskd@title@iv}{\eskd@i}
-\newcommand{\titleName}[1]{\renewcommand{\eskd@title@iv}{#1}}
-\newcommand{\tfIV}[1]{\renewcommand{\eskd@title@iv}{#1}}
-
-\newcommand{\eskd@title@vi}{\eskd@ii}
-\newcommand{\titleSignature}[1]{\renewcommand{\eskd@title@vi}{#1}}
-\newcommand{\tfVI}[1]{\renewcommand{\eskd@title@vi}{#1}}
-
-
-
-\newcommand{\eskd@title@bottom}{\eskdyear}
-\newcommand{\titleBottom}[1]{\renewcommand{\eskd@title@bottom}{#1}}
-
-
 
 
 \newcommand{\eskdListOfChanges}{\newpage
