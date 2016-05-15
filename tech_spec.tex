@@ -1,7 +1,7 @@
 \documentclass[
 %a4paper,12pt
 encoding=utf8
-]{eskd}
+]{twoeskd}
 
 % \usepackage{eskdappsheet}
 
@@ -39,20 +39,21 @@ encoding=utf8
 \setlength{\parskip}{0.2cm}
 
 % Headers & footers
-\usepackage{fancyhdr}
-\pagestyle{fancyplain}
-\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
-\fancyhead[CE]{\fancyplain{}{\scriptsize\textbf{RU.17701729.509000 ТЗ 01-1-ЛУ}}}
-\fancyhead[RE]{\fancyplain{}{}}
-\fancyhead[LO]{\fancyplain{}{}}
-\fancyhead[CO]{\fancyplain{}{\scriptsize\textbf{RU.17701729.509000 ТЗ 01-1-ЛУ}}}
-\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
-\fancyfoot[LE]{\fancyplain{}{}}
-\fancyfoot[CE]{\fancyplain{}{}}
-\fancyfoot[RE]{\fancyplain{}{}}
-\fancyfoot[LO]{\fancyplain{}{}}
-\fancyfoot[CO]{\fancyplain{}{}}
-\fancyfoot[RO]{\fancyplain{}{}}
+% \usepackage{fancyhdr}
+% \pagestyle{fancyplain}
+% \fancyhead[L]{\fancyplain{}{}}
+% \fancyhead[C]{\fancyplain{}{\scriptsize\textbf{RU.17701729.509000 ТЗ 01-1-ЛУ}}}
+% \fancyhead[R]{\fancyplain{}{}}
+% \fancyfoot[L]{\fancyplain{}{}}
+% \fancyfoot[C]{\fancyplain{}{}}
+% \fancyfoot[R]{\fancyplain{}{}}
+
+% clear header/footer for current page style
+% \fancyhf{}
+
+% debug to see the frame borders
+% from https://en.wikibooks.org/wiki/LaTeX/Page_Layout
+\usepackage{showframe}
 
 % Indices & bibliography
 \usepackage{natbib}
@@ -98,7 +99,7 @@ encoding=utf8
 
 \begin{document}
 
-% Overall we want horizontal tables only
+% From now on (and overall) we want horizontal tables
 \pagestyle{myhorizontaltable}
 
 % Titlepage & ToC
@@ -166,7 +167,7 @@ encoding=utf8
 % Index
 \newpage
 \phantomsection
-\addcontentsline{toc}{section}{Алфавитный указатель}    
+\addcontentsline{toc}{section}{Алфавитный указатель}
 \printindex
 
 \end{document}
