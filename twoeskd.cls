@@ -42,7 +42,7 @@ format (V.Fyodorov@tltsu.ru)]
 
 \LoadClass[a4paper]{article}
 
-\RequirePackage[\eskdencoding]{inputenc}
+\RequirePackage[utf8,\eskdencoding]{inputenc}
 \RequirePackage[russian]{babel}
 \RequirePackage[T2A]{fontenc}
 \RequirePackage{rotating}
@@ -53,8 +53,7 @@ format (V.Fyodorov@tltsu.ru)]
 \RequirePackage{pscyr}
 \renewcommand{\rmdefault}{far}
 
-\RequirePackage[left=24mm,right=11mm%
-,top=10mm,nofoot,headsep=0pt]{geometry}
+\RequirePackage[left=24mm,right=11mm,top=10mm,headsep=5pt]{geometry}
 
 \newcommand{\set@eskd@bottom}[1]{%
   \setlength{\textheight}{\eskdheight mm}
@@ -152,7 +151,7 @@ format (V.Fyodorov@tltsu.ru)]
   %     Форма 2\ifeskd@twoside б\else a\fi}}
   \newsavebox{\eskd@myhoriz@signature}
   \savebox{\eskd@myhoriz@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
-  \setlength{\headheight}{25.2pt}
+  \setlength{\headheight}{30.2pt}
   \fancypagestyle{myhorizontaltable}{%
   % \fancyhf{}
   \fancyhead[L]{%
