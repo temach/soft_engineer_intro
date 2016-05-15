@@ -615,42 +615,11 @@ format (V.Fyodorov@tltsu.ru)]
 
 
 \AtBeginDocument{%
-
-  %\inputencoding{koi8-r}
-
-
-  % \make@eskd@border
   \make@eskd@vertical@frame
-
   \make@eskd@common@left
-  \make@eskd@common@hole
-  \make@eskd@common@page
-
-  \make@eskd@first@style
-  \make@eskd@title@style
-  \make@eskd@common@style
 
   \make@eskd@myvert@style
   \make@eskd@myhoriz@style
 
-  % \pagestyle{common}
-  % \inputencoding{\eskdencoding}
-  % \ifeskd@title\eskd@maketitle
-  % \else\thispagestyle{first}\set@eskd@bottom{30mm}\fi
-  % \thispagestyle{first}\set@eskd@bottom{30mm}
-  % \thispagestyle{myhoriz}\set@eskd@bottom{30mm}
-  \inputencoding{\eskdencoding}
-  \set@eskd@bottom{70mm}
-  % \pagestyle{common}
-
-  %\renewcommand{\make@eskd@border}{}
-  %\renewcommand{\make@eskd@vertical@frame}{}
-  %\renewcommand{\make@eskd@common@left}{}
-  %\renewcommand{\make@eskd@common@hole}{}
-  %\renewcommand{\make@eskd@common@page}{}
-  %\renewcommand{\make@eskd@first@style}{}
-  %\renewcommand{\make@eskd@title@style}{}
-  %\renewcommand{\make@eskd@common@style}{}
-  %\renewcommand{\eskd@maketitle}{}
   \relax
 }
