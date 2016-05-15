@@ -53,7 +53,7 @@ format (V.Fyodorov@tltsu.ru)]
 \RequirePackage{pscyr}
 \renewcommand{\rmdefault}{far}
 
-\RequirePackage[left=24mm,right=11mm,top=10mm,footskip=9pt,headsep=10pt]{geometry}
+\RequirePackage[left=24mm,right=11mm,top=10mm,footskip=25pt,headsep=10pt]{geometry}
 
 \newcommand{\set@eskd@bottom}[1]{%
   \setlength{\textheight}{\eskdheight mm}
@@ -62,11 +62,11 @@ format (V.Fyodorov@tltsu.ru)]
   }
 
 
-\newsavebox{\eskd@vertical@frame}
+\newsavebox{\eskd@vertical}
 
-\newcommand{\make@eskd@vertical@frame}{%
+\newcommand{\make@eskd@vertical}{%
         \unitlength 1mm %
-    \savebox{\eskd@vertical@frame}(0,0){%
+    \savebox{\eskd@vertical}(0,0){%
       \begin{rotate}{90}
         \begin{picture}(0,0)(0,0)
           \linethickness{\eskd@thick mm}
@@ -101,22 +101,24 @@ format (V.Fyodorov@tltsu.ru)]
 
 
 
-\newsavebox{\eskd@common@left}
+\newsavebox{\eskd@horizontal}
 
 \newcommand{\hh}{20} % convenience variable height
-\newcommand{\hw}{150} % convenience variable width
+\newcommand{\hw}{160} % convenience variable width
+% left and right borders
+\newcommand{\myleft}{-10} % convenience variable width
 
-\newcommand{\make@eskd@common@left}{%
-  \savebox{\eskd@common@left}(0,0){%
+\newcommand{\make@eskd@horizontal}{%
+  \savebox{\eskd@horizontal}(0,0){%
     \unitlength 1mm %
     \begin{picture}(0,0)(0,0)
       \linethickness{\eskd@thick mm}
       % y axis
-      \put(0,0){\line(0,1){\hh}}
+      \put(\myleft,0){\line(0,1){\hh}}
       \put(150,0){\line(0,1){\hh}}
       % x axis
-      \put(0,0){\line(1,0){\hw}}
-      \put(0,20){\line(1,0){\hw}}
+      \put(\myleft,0){\line(1,0){\hw}}
+      \put(\myleft,20){\line(1,0){\hw}}
       \linethickness{\eskd@thin mm}
       % y thin
       \put(30,0){\line(0,1){\hh}}
@@ -124,13 +126,13 @@ format (V.Fyodorov@tltsu.ru)]
       \put(90,0){\line(0,1){\hh}}
       \put(120,0){\line(0,1){\hh}}
       % x thin
-      \put(0,5){\line(1,0){\hw}}
-      \put(0,10){\line(1,0){\hw}}
-      \put(0,15){\line(1,0){\hw}}
+      \put(\myleft,5){\line(1,0){\hw}}
+      \put(\myleft,10){\line(1,0){\hw}}
+      \put(\myleft,15){\line(1,0){\hw}}
       % labels, first row left -> right
       \put(4,12){\makebox(0,0)[l]{\textar{Изм.}}}
       \put(34,12){\makebox(0,0)[l]{\textar{Лист}}}
-      \put(64,12){\makebox(0,0)[l]{\textar{\textnumero докум.}}}
+      \put(64,12){\makebox(0,0)[l]{\textar{\textnumero \ докум.}}}
       \put(94,12){\makebox(0,0)[l]{\textar{Подп.}}}
       \put(124,12){\makebox(0,0)[l]{\textar{Дата}}}
       % labels second row, left -> right
@@ -147,21 +149,22 @@ format (V.Fyodorov@tltsu.ru)]
 
 \newcommand{\make@eskd@myhoriz@style}{%
   \newsavebox{\eskd@myhoriz@signature}
-  \savebox{\eskd@myhoriz@signature}{{\inputencoding{\eskdencoding}\eskd@typeid}}
+  \savebox{\eskd@myhoriz@signature}{{\inputencoding{\eskdencoding}\scriptsize{\eskd@typeid}}}
   \setlength{\headheight}{30.2pt}
   \fancypagestyle{myhorizontaltable}{%
   % \fancyhf{}
   \fancyhead[L]{%
     \unitlength 1mm
     \begin{picture}(0,0)(3,-6)
-      \put(10,-\eskdheight){\usebox{\eskd@common@left}}
-      \put(0,-\eskdheight){\begin{picture}(0,0)
-           \put(120,7.5){\makebox(0,0){\usebox{\eskd@myhoriz@signature}}}
-         \end{picture}}
+      \put(10,-\eskdheight){%
+          \begin{picture}(0,0)
+            \usebox{\eskd@horizontal}
+            \put(28,8){\makebox(0,0)[r]{\usebox{\eskd@myhoriz@signature}}}
+          \end{picture}%
+      }
     \end{picture}
     }
-    % \fancyhead[C]{\large{\bfseries\thepage \\ \textbf{RU.17701729.509000 T3 01-1}}}
-  % \fancyhead[R]{\fancyplain{}{\bfseries\thepage}}
+  \fancyhead[C]{\large{\bfseries\thepage \\ \textbf{\eskd@typeid}}}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
   }
@@ -173,15 +176,17 @@ format (V.Fyodorov@tltsu.ru)]
   \newsavebox{\eskd@myvert@signature}
   \savebox{\eskd@myvert@signature}{{\inputencoding{\eskdencoding}\eskd@typeid}}
   \fancypagestyle{myverticaltable}{%
+  % clear the old headers. We don't do this.
   % \fancyhf{}
   \fancyhead[L]{%
     \unitlength 1mm
     \begin{picture}(0,0)(3,-6)
-      % \put(0,0){\usebox{\eskd@border}}
-      \put(0,-\eskdheight){\usebox{\eskd@vertical@frame}}
-      \put(0,-\eskdheight){\begin{picture}(0,0)
-           \put(120,7.5){\makebox(0,0){\usebox{\eskd@myvert@signature}}}
-         \end{picture}}
+      \put(0,-\eskdheight){\usebox{\eskd@vertical}}
+      \put(0,-\eskdheight){
+            \begin{rotate}{90}%
+            % \put(20,8){\makebox(0,0){\usebox{\eskd@myvert@signature}}}
+            \end{rotate}
+      }
     \end{picture}
     }
   \renewcommand{\headrulewidth}{0pt}
@@ -215,8 +220,8 @@ format (V.Fyodorov@tltsu.ru)]
 \AtBeginDocument{%
   \set@eskd@bottom{55mm}
 
-  \make@eskd@vertical@frame
-  \make@eskd@common@left
+  \make@eskd@vertical
+  \make@eskd@horizontal
 
   \make@eskd@myvert@style
   \make@eskd@myhoriz@style

@@ -1,6 +1,6 @@
 \documentclass[
 %a4paper,12pt
-encoding=utf8
+encoding=utf8,draft
 ]{twoeskd}
 
 % \usepackage{eskdappsheet}
@@ -49,11 +49,11 @@ encoding=utf8
 % \fancyfoot[R]{\fancyplain{}{}}
 
 % clear header/footer for current page style
-% \fancyhf{}
+\fancyhf{}
 
 % debug to see the frame borders
 % from https://en.wikibooks.org/wiki/LaTeX/Page_Layout
-\usepackage{showframe}
+% \usepackage{showframe}
 
 % Indices & bibliography
 \usepackage{natbib}
@@ -88,6 +88,8 @@ encoding=utf8
 
 
 % Custom commands
+% configure eskd
+\workTypeId{RU.17701729.509000 ТЗ 01-1-ЛУ}
 
 % Custom packages
 \usepackage{pdfpages}
@@ -166,6 +168,9 @@ encoding=utf8
 
 % Index
 \newpage
+
+% \eskdListOfChanges
+
 \phantomsection
 \addcontentsline{toc}{section}{Алфавитный указатель}
 \printindex
