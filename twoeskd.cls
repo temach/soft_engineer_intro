@@ -146,9 +146,6 @@ format (V.Fyodorov@tltsu.ru)]
 
 
 \newcommand{\make@eskd@myhoriz@style}{%
-  \newsavebox{\eskd@myhoriz@gost}
-  % \savebox{\eskd@myhoriz@gost}{\scriptsize\textar{ГОСТ 2.104-68
-  %     Форма 2\ifeskd@twoside б\else a\fi}}
   \newsavebox{\eskd@myhoriz@signature}
   \savebox{\eskd@myhoriz@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
   \setlength{\headheight}{30.2pt}
@@ -212,6 +209,9 @@ format (V.Fyodorov@tltsu.ru)]
 
 
 
+% Will put your work type id ("RU.17701729.509000 ТЗ 01-1-ЛУ") into all tables
+\newcommand{\eskd@typeid}{}
+\newcommand{\workTypeId}[1]{\renewcommand{\eskd@typeid}{#1}}
 
 \newcommand{\eskd@i}{}
 \newcommand{\docName}[1]{\renewcommand{\eskd@i}{#1}}
@@ -249,10 +249,10 @@ format (V.Fyodorov@tltsu.ru)]
 \newcommand{\approvedBy}[1]{\renewcommand{\eskd@xiV}{#1}}
 \newcommand{\fXIv}[1]{\renewcommand{\eskd@xiV}{#1}}
 
-
 \newcommand{\eskd@title@i}{}
 \newcommand{\titleTop}[1]{\renewcommand{\eskd@title@i}{#1}}
 \newcommand{\tfI}[1]{\renewcommand{\eskd@title@i}{#1}}
+
 
 \newif\ifeskd@title@appr \eskd@title@apprfalse
 \newif\ifeskd@title@agr  \eskd@title@agrfalse
