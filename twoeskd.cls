@@ -152,7 +152,8 @@ format (V.Fyodorov@tltsu.ru)]
   \savebox{\eskd@myhoriz@signature}{{\inputencoding{\eskdencoding}\scriptsize{\eskd@typeid}}}
   \setlength{\headheight}{30.2pt}
   \fancypagestyle{myhorizontaltable}{%
-  % \fancyhf{}
+  % clear the old headers. Otherwise they will overlap when switching styles
+  \fancyhf{}
   \fancyhead[L]{%
     \unitlength 1mm
     \begin{picture}(0,0)(3,-6)
@@ -176,11 +177,11 @@ format (V.Fyodorov@tltsu.ru)]
   \newsavebox{\eskd@myvert@signature}
   \savebox{\eskd@myvert@signature}{{\inputencoding{\eskdencoding}\eskd@typeid}}
   \fancypagestyle{myverticaltable}{%
-  % clear the old headers. We don't do this.
-  % \fancyhf{}
+  % clear the old headers. Otherwise they will overlap when switching styles
+  \fancyhf{}
   \fancyhead[L]{%
     \unitlength 1mm
-    \begin{picture}(0,0)(3,-6)
+    \begin{picture}(0,0)(-3,-15)
       \put(0,-\eskdheight){\usebox{\eskd@vertical}}
       \put(0,-\eskdheight){
             \begin{rotate}{90}%
@@ -218,9 +219,6 @@ format (V.Fyodorov@tltsu.ru)]
 
 
 \AtBeginDocument{%
-  % clear settings for header and footer
-  \fancyhf{}
-
   \set@eskd@bottom{55mm}
 
   \make@eskd@vertical
