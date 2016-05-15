@@ -1,26 +1,5 @@
 %% Copyright 2004 Vjacheslav A. Fyodorov
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \NeedsTeXFormat{LaTeX2e} \ProvidesClass{twoeskd}[2004/10/12 a4 eskd
 format (V.Fyodorov@tltsu.ru)]
 
@@ -549,51 +528,6 @@ format (V.Fyodorov@tltsu.ru)]
 \newcommand{\eskd@title@bottom}{\eskdyear}
 \newcommand{\titleBottom}[1]{\renewcommand{\eskd@title@bottom}{#1}}
 
-\renewcommand{\maketitle}{}
-\newcommand{\eskd@maketitle}{%
-    \thispagestyle{title}
-    \set@eskd@bottom{55mm}
-    \usefont{T2A}{far}{m}{n}
-    \large
-    \vspace*{1mm}
-    \begin{center}
-        \bfseries\Large
-        \eskd@title@i
-    \end{center}
-    \vfill
-    \centerline{\raisebox{0mm}[0mm][0mm]{\tfIII}}
-    \vfill
-    \begin{center}
-        {\bfseries\Large
-            \MakeUppercase{\eskd@title@iv}}\mbox{}\\[3mm]
-            {\large\MakeUppercase{\eskd@title@vi}}
-        \end{center}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        \vfill
-        \unitlength\textwidth\begin{picture}(0,0)
-            \put(0,0){\makebox(0,0)[l]{\hyphenpenalty=10000 %
-                \begin{tabular}{@{\hspace{5mm}}p{80mm}@{\hspace{10mm}}p{80mm}}
-                    \raggedright\eskd@agr@list &{\raggedright\eskd@author@list}\\
-                \end{tabular}
-            }}
-        \end{picture}
-        \vfill\vfill
-        \begin{center}
-            \eskd@title@bottom
-        \end{center}
-        \newpage
-
-        \ifeskd@twoside
-        \thispagestyle{empty}
-        \cleardoublepage
-        \fi
-
-        \thispagestyle{first}
-        \set@eskd@bottom{30mm}
-
-}
-
-\set@eskd@bottom{\ifeskd@title15mm\else55mm\fi}
 
 
 
@@ -615,6 +549,8 @@ format (V.Fyodorov@tltsu.ru)]
 
 
 \AtBeginDocument{%
+  \set@eskd@bottom{55mm}
+
   \make@eskd@vertical@frame
   \make@eskd@common@left
 
