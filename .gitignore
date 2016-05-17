@@ -4,6 +4,7 @@
 *.idx
 *.aux
 *.synctex.gz
+*.nav
 
 # But not these files...
 !.gitignore
