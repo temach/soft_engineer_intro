@@ -5,6 +5,7 @@
 *.aux
 *.synctex.gz
 *.nav
+*.vrb
 
 # But not these files...
 !.gitignore
