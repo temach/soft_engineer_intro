@@ -3,23 +3,75 @@
     encoding=utf8
 ]{twoeskd}
 
+
+% Packages required by doxygen
+\usepackage[export]{adjustbox} % also loads graphicx
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{makeidx}
+
+% NLS support packages
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{pscyr}
+
+% Font selection
+\usepackage{courier}
+\usepackage{amssymb}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.2cm}
+
+
+% debug to see the frame borders
+% from https://en.wikibooks.org/wiki/LaTeX/Page_Layout
+% \usepackage{showframe}
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+% change style of titles in \section{}
+\usepackage{titlesec}
+\titleformat{\section}[hang]{\Large\bfseries\center}{\thetitle.}{1em}{}
+\titleformat{\subsection}[hang]{\large\normalfont\raggedright}{\thetitle.}{1em}{\underline}
+\titleformat{\subsubsection}[hang]{\normalsize\normalfont\raggedright}{\thetitle.}{1pt}{}
+
+% Packages for text layout in normal mode
+% \usepackage[parfill]{parskip} % автоматом делает пустые линии между параграфами, там где они есть в тексте
+% \usepackage{indentfirst} % indent even in first paragraph
+\usepackage{setspace}	 % controls space between lines
+\setstretch{1} % space between lines
+\setlength\parindent{0.9cm} % size of indent for every paragraph
+\usepackage{csquotes}% превратить " " в красивые двойные кавычки
+\MakeOuterQuote{"}
+
+
+% this makes items spacing single-spaced in enumerations.
+\newenvironment{my_enumerate}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}}{\end{enumerate}
+}
 \usepackage{pbox}
 
+% configure eskd
 \titleTop{
 \textbf{\Large ПРАВИТЕЛЬСТВО РОССИЙСКОЙ ФЕДЕРАЦИИ \\
 НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ \\
 «ВЫСШАЯ ШКОЛА ЭКОНОМИКИ» } \\
-
 \vspace*{0.2cm}
 {\small Факультет компьютерных наук \\
 Департамент программнoй инженерии \\
 }
 }
-
-\titleDesignedBy{
-Студент группы БПИ 151 НИУ ВШЭ
-}{Абрамов А.M.}
-
+\titleDesignedBy{Студент группы БПИ 151 НИУ ВШЭ}{Абрамов А.M.}
 \titleAgreedBy{%
 \parbox[t]{7cm} {
 Доцент департамента \\
@@ -27,16 +79,14 @@
 факультета компьютерных наук \\
 канд. техн. наук \\
 }}{Р. З. Ахметсафина}
-
 \titleApprovedBy{
 \parbox[t]{7cm} {
 Академический руководитель \\
 образовательной программы \\
 «Программная инженерия» \\
 }}{В. В. Шилов}
-
 \titleName{ПРОГРАММА СКЕЛЕТНАЯ АНИМАЦИЯ}
-\workTypeId{RU.17701729.509000-01 T3 01-1}
+\workTypeId{RU.17701729.509000 T3 01-1-ЛУ}
 
 \titleSubname{Техническое задание}
 
