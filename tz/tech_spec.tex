@@ -12,7 +12,6 @@ encoding=utf8
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{makeidx}
-\usepackage[table]{xcolor}
 
 % NLS support packages
 \usepackage[T2A]{fontenc}
@@ -20,33 +19,11 @@ encoding=utf8
 \usepackage{pscyr}
 
 % Font selection
-\usepackage[T1]{fontenc}
-\usepackage[scaled=.90]{helvet}
 \usepackage{courier}
 \usepackage{amssymb}
 
-% Page & text layout
-% \usepackage{geometry}
-% \geometry{%
-%   a4paper,%
-%   top=2.5cm,%
-%   bottom=4.5cm,%
-%   left=2.5cm,%
-%   right=2.5cm%
-% }
-%\setlength{\emergencystretch}{15pt}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0.2cm}
-
-% Headers & footers
-% \usepackage{fancyhdr}
-% \pagestyle{fancyplain}
-% \fancyhead[L]{\fancyplain{}{}}
-% \fancyhead[C]{\fancyplain{}{\scriptsize\textbf{RU.17701729.509000 ТЗ 01-1-ЛУ}}}
-% \fancyhead[R]{\fancyplain{}{}}
-% \fancyfoot[L]{\fancyplain{}{}}
-% \fancyfoot[C]{\fancyplain{}{}}
-% \fancyfoot[R]{\fancyplain{}{}}
 
 % debug to see the frame borders
 % from https://en.wikibooks.org/wiki/LaTeX/Page_Layout
@@ -57,7 +34,6 @@ encoding=utf8
 \usepackage[titles]{tocloft}
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{5}
-\makeindex
 
 % change style of titles in \section{}
 \usepackage{titlesec}
@@ -86,30 +62,42 @@ encoding=utf8
 
 % Custom commands
 % configure eskd
-\workTypeId{RU.17701729.509000 ТЗ 01-1-ЛУ}
+\titleTop{
+\textbf{\Large ПРАВИТЕЛЬСТВО РОССИЙСКОЙ ФЕДЕРАЦИИ \\
+НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ \\
+«ВЫСШАЯ ШКОЛА ЭКОНОМИКИ» } \\
+\vspace*{0.2cm}
+{\small Факультет компьютерных наук \\
+Департамент программнoй инженерии \\
+}
+}
+\titleDesignedBy{Студент группы БПИ 151 НИУ ВШЭ}{Абрамов А.M.}
+\titleAgreedBy{%
+\parbox[t]{7cm} {
+Доцент департамента \\
+программной инженерии \\
+факультета компьютерных наук \\
+канд. техн. наук \\
+}}{Р. З. Ахметсафина}
+\titleApprovedBy{
+\parbox[t]{7cm} {
+Академический руководитель \\
+образовательной программы \\
+«Программная инженерия» \\
+}}{В. В. Шилов}
+\titleName{ПРОГРАММА СКЕЛЕТНАЯ АНИМАЦИЯ}
+\workTypeId{RU.17701729.509000 T3 01-1-ЛУ}
 
-% Custom packages
-\usepackage{pdfpages}
+\titleSubname{Техническое задание}
 
-\makeindex
 
 %===== C O N T E N T S =====
 
 
 \begin{document}
 
-% From now on (and overall) we want horizontal tables
-\pagestyle{myhorizontaltable}
-
 % Titlepage & ToC
 \pagenumbering{roman}
-
-% First 2 pages need vertical table
-\input{title_page}\thispagestyle{myverticaltable}
-
-% First 2 pages need vertical table
-% this page is 80% like titlepage
-\input{second_title_page}\thispagestyle{myverticaltable}
 
 % some water filling text, that is pointless but adds text
 % \input{annotation}
@@ -117,7 +105,6 @@ encoding=utf8
 \newpage
 \pagenumbering{arabic}
 \tableofcontents
-% \pagenumbering{arabic}
 
 % --- add my custom headers ---
 \newpage
@@ -133,11 +120,11 @@ encoding=utf8
 \input{purpose_of_development}
 
 \newpage
-\section{Требования к програмному изделию}
+\section{Требования к программному изделию}
 \input{demands_from_program}
 
 \newpage
-\section{Требования к програмной документации}
+\section{Требования к программной документации}
 \input{demands_from_documentation}
 
 \newpage
@@ -153,19 +140,16 @@ encoding=utf8
 \input{howto_control_and_submit}
 
 \newpage
-\section{Приложение. Терминология}
+\section{Приложение 1. Терминология}
 \input{terminology}
 
 \newpage
-\section{Приложение. Схема интерфейса}
+\section{Приложение 2. Схема интерфейса программы}
 \input{interface}
 
 \newpage
-\section{Приложение. Список используемой литературы}
+\section{Приложение 3. Список используемой литературы}
 \input{used_literature}
-
-% \newpage
-%\section{Приложение 3. Изображение пользовательского интерфейса.}
 
 % Index
 \newpage
