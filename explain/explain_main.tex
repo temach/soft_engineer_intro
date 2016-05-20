@@ -12,7 +12,6 @@ encoding=utf8
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{makeidx}
-\usepackage[table]{xcolor}
 
 % NLS support packages
 \usepackage[T2A]{fontenc}
@@ -20,8 +19,6 @@ encoding=utf8
 \usepackage{pscyr}
 
 % Font selection
-\usepackage[T1]{fontenc}
-\usepackage[scaled=.90]{helvet}
 \usepackage{courier}
 \usepackage{amssymb}
 
@@ -38,7 +35,6 @@ encoding=utf8
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0.2cm}
 
-\usepackage{color}
 \usepackage{listings}
 
 
@@ -90,30 +86,41 @@ encoding=utf8
 
 % Custom commands
 % configure eskd
-\workTypeId{RU.17701729.509000 ТЗ 01-1-ЛУ}
+\titleTop{
+\textbf{\Large ПРАВИТЕЛЬСТВО РОССИЙСКОЙ ФЕДЕРАЦИИ \\
+НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ \\
+«ВЫСШАЯ ШКОЛА ЭКОНОМИКИ» } \\
+\vspace*{0.2cm}
+{\small Факультет компьютерных наук \\
+Департамент программнoй инженерии \\
+}
+}
+\titleDesignedBy{Студент группы БПИ 151 НИУ ВШЭ}{Абрамов А.M.}
+\titleAgreedBy{%
+\parbox[t]{7cm} {
+Доцент департамента \\
+программной инженерии \\
+факультета компьютерных наук \\
+канд. техн. наук \\
+}}{Р. З. Ахметсафина}
+\titleApprovedBy{
+\parbox[t]{7cm} {
+Академический руководитель \\
+образовательной программы \\
+«Программная инженерия» \\
+}}{В. В. Шилов}
+\titleName{ПРОГРАММА СКЕЛЕТНАЯ АНИМАЦИЯ}
+\workTypeId{RU.17701729.509000 T3 01-1-ЛУ}
 
-% Custom packages
-\usepackage{pdfpages}
-
-\makeindex
+\titleSubname{Пояснительная записка}
 
 %===== C O N T E N T S =====
 
 
 \begin{document}
 
-% From now on (and overall) we want horizontal tables
-\pagestyle{myhorizontaltable}
-
 % Titlepage & ToC
 \pagenumbering{roman}
-
-% First 2 pages need vertical table
-\input{title_page}\thispagestyle{myverticaltable}
-
-% First 2 pages need vertical table
-% this page is 80% like titlepage
-\input{second_title_page}\thispagestyle{myverticaltable}
 
 % some water filling text, that is pointless but adds text
 % \input{annotation}
@@ -145,12 +152,16 @@ encoding=utf8
 \input{used_literature}
 
 \newpage
-\section{Приложение. Терминология}
+\section{Приложение 1. Терминология}
 \input{terminology}
 
 \newpage
-\section{Приложение. Формат Collada (.dae)}
+\section{Приложение 2. Формат Collada (.dae)}
 \input{collada_format}
+
+\newpage
+\section{Приложение 3. Описание классов, полей и методов}
+\input{class_field_method}
 
 % Index
 \newpage
