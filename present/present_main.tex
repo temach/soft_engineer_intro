@@ -74,9 +74,6 @@
     \medskip
     
     В отличии от 2-х мерной анимаци, художник не рисует каждый кадр, а работает с моделью для которой последовательно задает различные позы.
-
-    \medskip 
-    Отображение анимации - одна из наиболее актуальных задач  в производственной, научной и деловой сферах, а также в области развлечений.
 \end{small}
 
 \columnbreak
@@ -102,43 +99,11 @@
 %=============================================================
 \begin{frame}
 \frametitle{Обоснование актуальности работы}
-    \begin{center}            
-    \begin{large}
-    ???
-    \end{large}
-    \end{center}
-\end{frame}
 
-
-
-%=============================================================
-\begin{frame}
-\frametitle{Цели и задачи работы}
-    Цель работы - реализовать систему скелетной анимации.
-    
-    \bigskip
-    
-    Задачи работы
-    
-    \smallskip
-	\begin{enumerate}
-	\item Создание исходных данных (файлов) для скелетной анимации.
-	\item Загрузка анимации из файла (содержание описанно в ТЗ).
-	\item Рассчет кадров анимации.
-	\item Воспроизведение анимации на экране средствами OpenGL.
-	\end{enumerate}
-    
-\end{frame}
-
-
-
-%=============================================================
-\begin{frame}
-\frametitle{Аналоги программы}
-    \scriptsize{Пакеты 3-х мерного моделлирования. Maya, 3ds MAX, Blender, Cinema4D.}
+\scriptsize{Отображение анимации - одна из наиболее актуальных задач  в производственной, научной и деловой сферах, а также в области развлечений.}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{all_tools.png}
+    \includegraphics[width=0.7\textwidth]{all_tools.png}
     %\label{fig:awesome_image}
 \end{figure}
 
@@ -148,12 +113,31 @@
 
 %=============================================================
 \begin{frame}
+\frametitle{Цели и задачи работы}
+    Цель работы - реализовать программу скелетной анимации.
+    
+    \bigskip
+    
+    Задачи работы
+    
+    \smallskip
+	\begin{enumerate}
+	\item Рассмотреть различные подходы к анимации 3D моделей.
+	\item Разработать структуры данных для хранения анимационных данных.
+	\item Выбрать технологии для реализации.
+	\item Понять алгоритм скелетной анимации.
+	\item Изучить технологию OpenGL.
+	\item Реализовать программу.
+	\end{enumerate}
+    
+\end{frame}
+
+
+%=============================================================
+\begin{frame}
 \frametitle{Различные подходы}
 \begin{small}
-    Для 3-х мерной анимации не существует оптимального подхода. Все системы балансируют между методами с большим количеством вычислений и методами, требующими большого объема памяти.
-    
-    \medskip
-    \alert{Неявные системы} используются, когда действия персонажа связанны с другими предметами, и нельзя предугадать все возможные варианты анимации. Например для того, чтобы ставить ступню параллельно поверхности при движении по неровной земле.
+    \alert{Неявные системы} используются, когда персонаж может совершать несколько действий одновременно и невозможно предугадать все возможные варианты анимации.
     
     \smallskip
     Предпочтение \alert{явным системам} отдается, когда необходимо анимировать большие группы людей или животных.
@@ -196,10 +180,6 @@
     Неявная система - хранение не моделей, а более высокоуровневого описания движения. \\
     В частности неявные \alert{системы скелетной анимации} содержат описание (через матрицу поворота) для каждой кости, как например локоть, плечо, шея. В реальном времени эти описания применяются к неанимированной модели для рассчета следующего кадра анимации. Эти рассчеты обычно требуют сложной математики с матрицами и тригонометрией. А следовательно и много CPU времени.
     
-    \medskip
-    Для реализации требуются 3 вещи: скелет, модель и трэк анимации. \\  
-    Скелет определяет иерархию частей тела персонажа, в трэке содержатся матрицы для поворота скелета в ключевые моменты времени.
-    
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{implicit_animation.png}
@@ -211,16 +191,98 @@
 \end{frame}
 
 
+  
+%=============================================================
+\begin{frame}[fragile]
+\frametitle{Структуры данных: Кость и Скелет}
+\alert{Кость} содержит информацию о трех мерной трансформации (которая состоит из поворота, растяжения и смещения), а также информацию о кости-отце. Глобальная матрица для кости-потомка, - это произведение глобальной матрицы кости-родителя и матрицы кости-потомка. 
+
+\medskip
+
+\alert{Скелетом} называют иерархичную структуру сформированную костями. Скелет определяеться с помощью корневой кости в иерархии.
+
+\begin{scriptsize}
+\begin{figure}[h!]
+\begin{verbatim}
+class BoneNode
+{
+    public string Name;
+    public Matrix4 GlobalTransform;
+    public Matrix4 LocalTransform;
+
+    public BoneNode Parent;
+    public List<BoneNode> Children;
+    public BoneNode(Node node_data) { ... }
+}
+\end{verbatim}
+\end{figure}
+\end{scriptsize}
+
+\end{frame}
+
+
+  
+%=============================================================
+\begin{frame}
+\frametitle{Структуры данных: Трек анимации}
+\begin{small}
+В треке содержатся матрицы поворота скелета в ключевые моменты времени.
+В упрощенном виде трек можно представить в качестве  массива пар: \\
+$\lbrace$ время ключевого кадра, массив из матриц поворота для костей $\rbrace$
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{anim_track.png}
+    \caption{\scriptsize{В ключевые моменты времени \Code{(t_1, t_2, ... t_n)}, каждая кость ставиться в соответствие с матрицей локальной трансформации.}}    
+\end{figure}
+
+
+\end{small}
+\end{frame}
+
+
+  
+%=============================================================
+\begin{frame}[fragile]
+\frametitle{Структуры данных: Модель}
+\begin{scriptsize}
+
+\begin{multicols}{2}
+Модель состоит из набора вершин и весов вершин. В пакете для трех мерной анимации каждая вершина модели «привязывается» к какой-либо кости скелета. Движение кости должно влиять на привязанные к ней вершины.
+
+\columnbreak
+
+\begin{verbatim}
+struct Vbo
+{
+    public int QuantityIds;    
+    public int VertexBufferId;
+    public int NormalBufferId;
+    public int ElementBufferId;
+}
+\end{verbatim}
+
+\end{multicols}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{skinning.png}
+    \caption{\scriptsize{\textnumero 1 - модель; \textnumero 2 - скелет; \textnumero 3 - вершины модели, которые были привязанны к кости правого предплечья, выделенны красным}}
+    %\label{fig:awesome_image}
+\end{figure}
+
+\end{scriptsize}
+\end{frame}
+
 
 %=============================================================
 \begin{frame}
-\frametitle{Применение описания из трэка к скелету}
+\frametitle{Алгоритм}
 \begin{scriptsize}
-    Матрицы поворота для всех костей записываются в трэке относительно матрицы поворота родителя.
-Поэтому для деформации скелета необходимо применять матрицы последовательно.
-Мы начинаем с корневой кости и применяем к ней описанную в трэке анимации матрицу поворота.
-Затем, мы двигаемся вглубь скелета применяя матрицу родителя и деформацию описанную в трэке (то есть считаем глобальную матрицу поворота для данной кости).
-    
+В зависимости от времени из трека анимации извекаються данные о ключевом кадре.
+Связь матриц с костями известна и можно применить извлеченные матрицы к скелету. 
+Далее, так как известна связь костей с вершинами, можно применить трансформации костей к вершинам модели.
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1\textwidth]{forward_kinematics.png}
@@ -234,9 +296,32 @@
 
 %=============================================================
 \begin{frame}[fragile]
-\frametitle{Применение деформации скелета к модели}
+\frametitle{Применение трансформаций к скелету}
+В треке матрицы поворота записаны относительно матрицы поворота родителя. 
+Поэтому для анимации необходимо применять матрицы последовательно.
+Начиная с корневой кости, примнить к ней описанную в треке анимации матрицу поворота.
+Затем, двигаться вглубь скелета по иерархии и находить произведение матриц родителя и потомка (извлеченной из трека). В псевдокоде:
+    
+\begin{scriptsize}
+\begin{lstlisting}
+deform (bone, global matrix, track matrices)
+  get matrix for bone from track matrices
+  update global matrix
+  store the result in bone as global transform
+  if root has children
+    deform (children of this node, global, track matrices)
+  end if
+end function
+\end{lstlisting}
+\end{scriptsize}
 
-После того, как рассчитанны матрицы поворотов для скелета, их необходимо применить на вершины модели. Для этого используется рекурсивный алгоритм очень похожий на предыдущий.
+\end{frame}
+
+
+%=============================================================
+\begin{frame}[fragile]
+\frametitle{Применение трансформаций к модели}
+После того, как рассчитанны матрицы поворотов для скелета, их необходимо применить на вершины модели.
 
 \begin{scriptsize}
 \begin{lstlisting}
@@ -256,8 +341,9 @@ deform (bone root, mesh original, mesh deformed)
 \end{lstlisting}
 \end{scriptsize}
 
-
 \end{frame}
+
+
 
 
 %=============================================================
@@ -266,68 +352,41 @@ deform (bone root, mesh original, mesh deformed)
 \begin{itemize}
    \item Язык программирования C\#
    \item Библиотека \Code{Assimp v3.1 (http://assimp.org/)} для чтения файлов в формате collada (.dae).   
-   \item Библиотека \Code{OpenTK v1.1.4 (http://www.opentk.com/)} для вызова функций OpenGL из C\# и предоставления базовых классов, например: Matrix4, Vector3.   
+   \item Библиотека \Code{OpenTK v1.1.4 (http://www.opentk.com/)} для вызова функций OpenGL из C\# и предоставления базовых структур, например: Matrix4, Vector3.   
 \end{itemize}
 \end{frame}
 
 
 
 %=============================================================
-\begin{frame}
-\frametitle{Описание системы, блоки}
-	Диаграмма основных блоков.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{block_diagram.png}
-    \caption{\scriptsize{Схема логических блоков в программе}}
-   %\label{fig:awesome_image}
-\end{figure}    
-    
-\end{frame}
-
-
-
-%=============================================================
 \begin{frame}[fragile]
-\frametitle{Описание системы, блок чтения файла}
-	Заполнение структур данными из файла.
-	    
-    \smallskip
-	С помощью библиотеки Assimp производим чтение из файла. Для оптимальной работы мы переводим данные в свои структуры. Другие функции этой библиотеки не используются.
-	
+\frametitle{Буферы памяти OpenGL}
+	Загрузка данных о модели в OpenGL.
+	Запрос OpenGL об отводе буферов памяти под вершины, нормали и массив индексов.
+    
 \begin{scriptsize}
 \begin{lstlisting}
-public void LoadScene(byte[] filedata)
+private void NewOpenGLBuf(out int bufId, List<Vector3D> data) 
 {
-    using (MemoryStream fs = new MemoryStream(filedata))
+    GL.GenBuffers(1, out bufId);
+    GL.BindBuffer(BufferTarget.ArrayBuffer, bufId);    
+    var byteCount = dataBuffer.Count * 12;
+    var temp = new float[byteCount];
+    foreach(var v in dataBuffer)
     {
-        _cur_scene = new SceneWrapper(ReadAssimpScene(fs, "dae"));
-        _action = new Animator(_cur_scene.Animations[0]);
-        BoneNode bones = _cur_scene.BuildBoneNodes("Armature");
-        Node mesh = _cur_scene.FindNode("Mesh");
-        ActionState state = new ActionState();
-        _enttity = new Entity(_cur_scene, mesh, bones, state);
+       WriteIntoArray(temp, v);
     }
+    GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)byteCount
+            , temp, BufferUsageHint.StreamDraw);
+}
+
+private void Upload(out Vbo vboToFill)
+{
+    vboToFill = new Vbo();    
+    NewOpenGLBuf(out vboToFill.VertexBufferId, _mesh.Vertices);
 }
 \end{lstlisting}
 \end{scriptsize}
-		
-\end{frame}
-
-
-
-%=============================================================
-\begin{frame}
-\frametitle{Описание системы, блок состояния анимации}	
-	Хранит состояние анимации. Наиболее важные поля:
-\begin{itemize}        
-    \item Название трэка анимации.
-	\item Настоящий момент времени в секундах.
-	\item Индексы всех ключевых кадров и время каждого ключевого кадра.
-\end{itemize}
-
-    Есть фyнкция SetTime(\dots) для перехода к определенному моменту времени. Она находит интервал между ключевыми кадрами, подсчитывает величину интерполяции.
 \end{frame}
 
 
@@ -335,72 +394,31 @@ public void LoadScene(byte[] filedata)
 
 %=============================================================
 \begin{frame}[fragile]
-\frametitle{Описание системы, блок хранения данных}
-\begin{multicols}{2}
-    Работает со скелетом и моделью. Реализует функции поиска костей в скелете или подмоделей в модели.
+\frametitle{Материалы в OpenGL}
+	Загрузка данных о модели в OpenGL.
+    Применение свойства материала, например: цвет, коэффициент рассеивания света, коэффициент свечения и т.д.
     
-    \smallskip
-    Функция BuildBones строит скелет по данным из модели (скелет как отдельный класс не существует, он определяеться корневой костью). 
-    
-    \columnbreak
-    
-\begin{figure}
 \begin{scriptsize}
-\begin{verbatim}
-class BoneNode
+\begin{lstlisting}
+private void UseMaterial()
 {
-    public string Name;
-    public Matrix4 GlobalTransform;
-    public Matrix4 LocalTransform;
-    
-    public BoneNode Parent;
-    public List<BoneNode> Children;
-    public BoneNode(Node assimp_node) { ... }
+  color = Color2OpenTK(_material.ColorDiffuse);  
+  GL.Material(MaterialFace.FrontAndBack, Material.Diffuse, color);  
+  color = Color2OpenTK(_material.ColorAmbient);
+  GL.Material(MaterialFace.FrontAndBack, Material.Ambient, color);
+
+  color = new Color4(0, 0, 0, 1.0f);
+  if (_material.HasColorEmissive)
+  {
+      color = color2OpenTK(_material.ColorEmissive);              
+  }
+  GL.Material(MaterialFace.FrontAndBack, Material.Emission, color);
 }
-\end{verbatim}
+\end{lstlisting}
 \end{scriptsize}
-\caption{Kласс описывающий кость скелета}
-\end{figure}
-
-\end{multicols}
+  
 \end{frame}
 
-
-%=============================================================
-\begin{frame}
-\frametitle{Описание системы, блок деформации скелета}
-    Применяет данные, описывающие (в матрицах поворота) новую позицию для каждой кости к костям из скелета. То есть, деформирует скелет в соответствии с моментом времени в анимации.
-    
-    \medskip
-    На вход блока подается класс ActionState, содержащий информацию о состоянии анимации и корневая кость скелета.
-\end{frame}
-
-
-%=============================================================
-\begin{frame}
-\frametitle{Описание системы, блоки отрисовки модели}
-	Загружает данные о модели в OpenGL.
-	
-    \smallskip
-	Запрашивает OpenGL об отводе буферов памяти под вершины, нормали, цвета вершин и массив индексов.
-    
-    \smallskip
-    Применяет свойства материала, например: цвет, коэффициент рассеивания света, коэффициент свечения и т.д.
-    
-    \smallskip
-    Позволяет запросить у OpenGL указатель на созданные буфера памяти для их модификации.
-\end{frame}
-
-
-%=============================================================
-\begin{frame}
-\frametitle{Описание системы, блок прерсонажа}
-    Объединяет компоненты необходимые для анимации одного персонажа. Хранит ссылки на скелет (корневую кость), состояние анимации (ActionState), на саму модель и на класс отрисовки модели (MeshDraw)
-    
-    \medskip
-    В частности блок персонажа применяет трансформации из скелета к вершинам модели (взвешивая действие каждой кости на вершину) и модифицирует данные в буфере данных OpenGL, что и создает эффект анимации.
-
-\end{frame}
 
 
 
@@ -426,7 +444,6 @@ class BoneNode
     \end{large}
     \end{center}
 \end{frame}
-
 
 
 
