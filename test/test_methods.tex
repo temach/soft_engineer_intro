@@ -12,7 +12,6 @@ encoding=utf8
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{makeidx}
-\usepackage[table]{xcolor}
 
 % NLS support packages
 \usepackage[T2A]{fontenc}
@@ -20,8 +19,6 @@ encoding=utf8
 \usepackage{pscyr}
 
 % Font selection
-\usepackage[T1]{fontenc}
-\usepackage[scaled=.90]{helvet}
 \usepackage{courier}
 \usepackage{amssymb}
 
@@ -57,7 +54,6 @@ encoding=utf8
 \usepackage[titles]{tocloft}
 \setcounter{tocdepth}{3}
 \setcounter{secnumdepth}{5}
-\makeindex
 
 % change style of titles in \section{}
 \usepackage{titlesec}
@@ -86,7 +82,35 @@ encoding=utf8
 
 % Custom commands
 % configure eskd
-\workTypeId{RU.17701729.509000 ТЗ 01-1-ЛУ}
+\titleTop{
+\textbf{\Large ПРАВИТЕЛЬСТВО РОССИЙСКОЙ ФЕДЕРАЦИИ \\
+НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ \\
+«ВЫСШАЯ ШКОЛА ЭКОНОМИКИ» } \\
+\vspace*{0.2cm}
+{\small Факультет компьютерных наук \\
+Департамент программнoй инженерии \\
+}
+}
+\titleDesignedBy{Студент группы БПИ 151 НИУ ВШЭ}{Абрамов А.M.}
+\titleAgreedBy{%
+\parbox[t]{7cm} {
+Доцент департамента \\
+программной инженерии \\
+факультета компьютерных наук \\
+канд. техн. наук \\
+}}{Р. З. Ахметсафина}
+\titleApprovedBy{
+\parbox[t]{7cm} {
+Академический руководитель \\
+образовательной программы \\
+«Программная инженерия» \\
+профессор \\
+канд. техн. наук \\
+}}{В. В. Шилов}
+\titleName{ПРОГРАММА СКЕЛЕТНАЯ АНИМАЦИЯ}
+\workTypeId{RU.17701729.509000 T3 01-1-ЛУ}
+
+\titleSubname{Программа и методика испытаний}
 
 % Custom packages
 \usepackage{pdfpages}
@@ -97,19 +121,8 @@ encoding=utf8
 
 
 \begin{document}
-
-% From now on (and overall) we want horizontal tables
-\pagestyle{myhorizontaltable}
-
 % Titlepage & ToC
 \pagenumbering{roman}
-
-% First 2 pages need vertical table
-\input{title_page}\thispagestyle{myverticaltable}
-
-% First 2 pages need vertical table
-% this page is 80% like titlepage
-\input{second_title_page}\thispagestyle{myverticaltable}
 
 % some water filling text, that is pointless but adds text
 % \input{annotation}
