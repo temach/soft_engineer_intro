@@ -375,7 +375,8 @@ format (V.Fyodorov@tltsu.ru)]
     \newpage
 }
 
-\AtBeginDocument{%
+\RequirePackage{etoolbox}
+\AfterEndPreamble{%
 
   \make@eskd@vertical
   \make@eskd@horizontal
