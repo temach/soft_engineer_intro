@@ -3,54 +3,47 @@
 encoding=utf8
 ]{../twoeskd}
 
-% \usepackage{eskdappsheet}
-
 % Packages required by doxygen
+\usepackage{fixltx2e}
+\usepackage{calc}
+\usepackage{doxygen}
 \usepackage[export]{adjustbox} % also loads graphicx
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
+\usepackage{makeidx}
 \usepackage{multicol}
 \usepackage{multirow}
-\usepackage{makeidx}
+\PassOptionsToPackage{warn}{textcomp}
+\usepackage{textcomp}
+\usepackage[nointegrals]{wasysym}
 
 % NLS support packages
 \usepackage[T2A]{fontenc}
 \usepackage[russian]{babel}
-\usepackage{pscyr}
 
 % Font selection
 \usepackage{courier}
 \usepackage{amssymb}
+\usepackage{sectsty}
+\renewcommand{\familydefault}{\sfdefault}
+\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
 
 % Page & text layout
-% \usepackage{geometry}
-% \geometry{%
-%   a4paper,%
-%   top=2.5cm,%
-%   bottom=4.5cm,%
-%   left=2.5cm,%
-%   right=2.5cm%
-% }
-%\setlength{\emergencystretch}{15pt}
+\usepackage{geometry}
+\tolerance=750
+\hfuzz=15pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0.2cm}
-
-\usepackage{listings}
-
+\makeatletter
+\makeatother
 
 % Headers & footers
 % \usepackage{fancyhdr}
-% \pagestyle{fancyplain}
-% \fancyhead[L]{\fancyplain{}{}}
-% \fancyhead[C]{\fancyplain{}{\scriptsize\textbf{RU.17701729.509000 ТЗ 01-1-ЛУ}}}
-% \fancyhead[R]{\fancyplain{}{}}
-% \fancyfoot[L]{\fancyplain{}{}}
-% \fancyfoot[C]{\fancyplain{}{}}
-% \fancyfoot[R]{\fancyplain{}{}}
-
-% debug to see the frame borders
-% from https://en.wikibooks.org/wiki/LaTeX/Page_Layout
-% \usepackage{showframe}
+% \renewcommand{\sectionmark}[1]{%
+%   \markright{\thesection\ #1}%
+% }
 
 % Indices & bibliography
 \usepackage{natbib}
@@ -59,11 +52,32 @@ encoding=utf8
 \setcounter{secnumdepth}{5}
 \makeindex
 
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+}
+
+% Custom packages
+\usepackage{pdfpages}
+
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.2cm}
+
+\usepackage{listings}
+
+% debug to see the frame borders
+% from https://en.wikibooks.org/wiki/LaTeX/Page_Layout
+% \usepackage{showframe}
+
 % change style of titles in \section{}
 \usepackage{titlesec}
-\titleformat{\section}[hang]{\Large\bfseries\center}{\thetitle.}{1em}{}
-\titleformat{\subsection}[hang]{\large\normalfont\raggedright}{\thetitle.}{1em}{\underline}
-\titleformat{\subsubsection}[hang]{\normalsize\normalfont\raggedright}{\thetitle.}{1pt}{}
+\titleformat{\section}[hang]{\huge\bfseries\center}{\thetitle.}{1em}{}
+\titleformat{\subsection}[hang]{\Large\raggedright}{\thetitle.}{1em}{\underline}
+\titleformat{\subsubsection}[hang]{\large\raggedright}{\thetitle.}{1pt}{}
 
 % Packages for text layout in normal mode
 % \usepackage[parfill]{parskip} % автоматом делает пустые линии между параграфами, там где они есть в тексте
@@ -114,9 +128,8 @@ encoding=utf8
 
 \titleSubname{Пояснительная записка}
 
+
 %===== C O N T E N T S =====
-
-
 \begin{document}
 
 % Titlepage & ToC
@@ -160,7 +173,7 @@ encoding=utf8
 \input{collada_format}
 
 \newpage
-\section{Приложение 3. Описание классов, полей и методов}
+\section{Приложение 3. Описание классов}
 \input{class_field_method}
 
 % Index
