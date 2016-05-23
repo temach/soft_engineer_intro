@@ -1,0 +1,26 @@
+digraph G {
+    graph [fontsize=12 fontname="Verdana" compound=true];
+    node [shape=record fontsize=12 fontname="Verdana"];
+
+    W [label=" Чтение \n файла "];
+    A [label=" Применение \n деформации \n к скелету "];
+    AS [label=" Состояние \n анимации "];
+    DM [label=" Отрисовка \n модели "];
+
+    subgraph cluster_0 {
+        color=blue;
+        label="Персонаж";
+        SW [shape=Mrecord,label="{ Хранения \n данных | { скелет | модель }}"];
+        AS;
+        DM;
+    }
+
+    W->A;
+}
+
+
+
+
+// dot -Tpng blocks.dot -o blocks.png
+
+

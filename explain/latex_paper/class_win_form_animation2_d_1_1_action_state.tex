@@ -1,0 +1,50 @@
+\subsection{Класс Action\+State}
+\label{class_win_form_animation2_d_1_1_action_state}\index{Action\+State@{Action\+State}}
+
+
+This class knows what argumets to pass to Node\+Interpolator.  
+
+
+
+
+Базовые классы\+:Base\+For\+Event\+Driven.
+
+\subsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Set\+Current\+Action} (Animation action)\label{class_win_form_animation2_d_1_1_action_state_a19f814687397183cc3767bbb8d4e33ff}
+
+\begin{DoxyCompactList}\small\item\em Change the animation track. If there is more than one. We don\textquotesingle{}t support this yet. \end{DoxyCompactList}\item 
+void {\bf Set\+Time} (double time\+\_\+seconds)
+\end{DoxyCompactItemize}
+\subsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bf \+\_\+loop}\label{class_win_form_animation2_d_1_1_action_state_a5305d65aecb7a29b3b0c6012c8804b51}
+
+\begin{DoxyCompactList}\small\item\em Automatically play the animation again after it has timed out. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Свойства}
+\begin{DoxyCompactItemize}
+\item 
+double {\bf Time\+Cursor\+In\+Ticks}\hspace{0.3cm}{\ttfamily  [get]}\label{class_win_form_animation2_d_1_1_action_state_a5f9b73ba6bd5eed146e3ceeef9ed2a72}
+
+\begin{DoxyCompactList}\small\item\em position of the time cursor in ticks of animation. \end{DoxyCompactList}\item 
+double {\bf Total\+Duration\+Seconds}\hspace{0.3cm}{\ttfamily  [get]}\label{class_win_form_animation2_d_1_1_action_state_a0a4b1434b2df70ef8b84b49ae4669f0b}
+
+\begin{DoxyCompactList}\small\item\em Duration of animation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Подробное описание}
+This class knows what argumets to pass to Node\+Interpolator. 
+
+
+
+\subsubsection{Методы}
+\index{Win\+Form\+Animation2\+D\+::\+Action\+State@{Win\+Form\+Animation2\+D\+::\+Action\+State}!Set\+Time@{Set\+Time}}
+\index{Set\+Time@{Set\+Time}!Win\+Form\+Animation2\+D\+::\+Action\+State@{Win\+Form\+Animation2\+D\+::\+Action\+State}}
+\paragraph[{Set\+Time(double time\+\_\+seconds)}]{\setlength{\rightskip}{0pt plus 5cm}void Set\+Time (
+\begin{DoxyParamCaption}
+\item[{double}]{time\+\_\+seconds}
+\end{DoxyParamCaption}
+)}\label{class_win_form_animation2_d_1_1_action_state_a612534bbc6db22dc9d0e2e521265d3e1}
+Set the current time for the animation. Note\+: all the calculations here are done in ticks. 

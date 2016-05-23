@@ -1,0 +1,40 @@
+\subsection{Класс Renderer}
+\label{class_win_form_animation2_d_1_1_renderer}\index{Renderer@{Renderer}}
+
+
+Class to control open\+GL settings and do the actual drawing. All open\+GL calls will be here.  
+
+
+\subsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Clear\+Opengl\+Frame\+For\+Render} (Matrix4 camera\+\_\+matrix)\label{class_win_form_animation2_d_1_1_renderer_acd8d4d779a35f8f11a38b158c525cae5}
+
+\begin{DoxyCompactList}\small\item\em Prepare to render next Open\+GL frame. Clear depth/color buffers. \end{DoxyCompactList}\item 
+void {\bf Draw\+Axis3D} ()
+\begin{DoxyCompactList}\small\item\em Important points to remember\+: Set normals. Must be clock wise vertex draw order The x-\/axis is accross the screen, so the Z-\/axis triangle must have component along X\+: +-\/1 since look at looks towards the center, we need to offset it a bit to see the Z axis. \end{DoxyCompactList}\item 
+void {\bf Init\+Open\+GL} ()\label{class_win_form_animation2_d_1_1_renderer_a8690e89b528f55a820f4e52ab09e43c7}
+
+\begin{DoxyCompactList}\small\item\em Enable default Open\+GL settings. Set lights, material, etc. Call this once in the beginning. \end{DoxyCompactList}\item 
+void {\bf Resize\+Open\+GL} (int width, int height)\label{class_win_form_animation2_d_1_1_renderer_aeeebebac1bb2809f36e94795d29c706c}
+
+\begin{DoxyCompactList}\small\item\em Called when window size changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Подробное описание}
+Class to control open\+GL settings and do the actual drawing. All open\+GL calls will be here. 
+
+
+
+\subsubsection{Методы}
+\index{Win\+Form\+Animation2\+D\+::\+Renderer@{Win\+Form\+Animation2\+D\+::\+Renderer}!Draw\+Axis3D@{Draw\+Axis3D}}
+\index{Draw\+Axis3D@{Draw\+Axis3D}!Win\+Form\+Animation2\+D\+::\+Renderer@{Win\+Form\+Animation2\+D\+::\+Renderer}}
+\paragraph[{Draw\+Axis3\+D()}]{\setlength{\rightskip}{0pt plus 5cm}void Draw\+Axis3D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_win_form_animation2_d_1_1_renderer_a78178415342aec84aff33ff22fd711eb}
+
+
+Important points to remember\+: Set normals. Must be clock wise vertex draw order The x-\/axis is accross the screen, so the Z-\/axis triangle must have component along X\+: +-\/1 since look at looks towards the center, we need to offset it a bit to see the Z axis. 
+

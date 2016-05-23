@@ -1,0 +1,54 @@
+\subsection{Класс Entity}
+\label{class_win_form_animation2_d_1_1_entity}\index{Entity@{Entity}}
+
+
+Represents the currently loaded object. One day we will have lots of these.  
+
+
+\subsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Recursive\+Calculate\+Vertex\+Transform} (Node nd, Matrix4x4 current)\label{class_win_form_animation2_d_1_1_entity_a4f652bc4baf5a8f594384aab653088bf}
+
+\begin{DoxyCompactList}\small\item\em Find the appropriate matrix to apply to the given vertex. \end{DoxyCompactList}\item 
+void {\bf Render\+Model} ({\bf Draw\+Config} settings)\label{class_win_form_animation2_d_1_1_entity_ae7e350876ed1f078eb5a780c03b473a4}
+
+\begin{DoxyCompactList}\small\item\em Render the model stored in Entity\+Scene useing the \doxyref{Draw\+Config}{стр.}{class_win_form_animation2_d_1_1_draw_config} settings object. \end{DoxyCompactList}\item 
+void {\bf Update\+Model} (double dt\+\_\+ms)\label{class_win_form_animation2_d_1_1_entity_a069d68a65dcb75e1b3c2cd2c3c5ca99b}
+
+\begin{DoxyCompactList}\small\item\em Deform the model vertices to align with the skeleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bf Transform\+Position\+Assimp} (ref Vector3D pos, ref Matrix4x4 mat, out Vector3D result)
+\begin{DoxyCompactList}\small\item\em Transform a Position by the given Matrix. Based on open\+TK compatiability vector 3 class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Подробное описание}
+Represents the currently loaded object. One day we will have lots of these. 
+
+
+
+\subsubsection{Методы}
+\index{Win\+Form\+Animation2\+D\+::\+Entity@{Win\+Form\+Animation2\+D\+::\+Entity}!Transform\+Position\+Assimp@{Transform\+Position\+Assimp}}
+\index{Transform\+Position\+Assimp@{Transform\+Position\+Assimp}!Win\+Form\+Animation2\+D\+::\+Entity@{Win\+Form\+Animation2\+D\+::\+Entity}}
+\paragraph[{Transform\+Position\+Assimp(ref Vector3\+D pos, ref Matrix4x4 mat, out Vector3\+D result)}]{\setlength{\rightskip}{0pt plus 5cm}static void Transform\+Position\+Assimp (
+\begin{DoxyParamCaption}
+\item[{ref Vector3D}]{pos, }
+\item[{ref Matrix4x4}]{mat, }
+\item[{out Vector3D}]{result}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_win_form_animation2_d_1_1_entity_a33a723df0a875e102291644e659de2b1}
+
+
+Transform a Position by the given Matrix. Based on open\+TK compatiability vector 3 class. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em pos} & The position to transform\\
+\hline
+{\em mat} & The desired transformation\\
+\hline
+{\em result} & The transformed position\\
+\hline
+\end{DoxyParams}

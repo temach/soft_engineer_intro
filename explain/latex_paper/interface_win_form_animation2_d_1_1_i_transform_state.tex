@@ -1,0 +1,31 @@
+\subsection{Интерфейс I\+Transform\+State}
+\label{interface_win_form_animation2_d_1_1_i_transform_state}\index{I\+Transform\+State@{I\+Transform\+State}}
+
+
+Implement this when class allows local matrix transforms. (\doxyref{Entity}{стр.}{class_win_form_animation2_d_1_1_entity}, Camera)  
+
+
+
+
+Производные классы\+:Camera\+Drawing2D и Camera\+Free\+Fly3D.
+
+\subsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf Move\+By} (Vector3 direction)\label{interface_win_form_animation2_d_1_1_i_transform_state_a18642041c99d4296d1c64b247293cea2}
+
+\begin{DoxyCompactList}\small\item\em x,y,z should be direction parameters, one of \{-\/1, 0, 1\}. Called on keyboard events. \end{DoxyCompactList}\item 
+void {\bf Rotate\+By} (double angle\+\_\+degrees)\label{interface_win_form_animation2_d_1_1_i_transform_state_a9d5f016db4f3ff2ad068fe06c46e812d}
+
+\begin{DoxyCompactList}\small\item\em Rotate by angle around default axis. Called on mouse events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Свойства}
+\begin{DoxyCompactItemize}
+\item 
+Vector3 {\bf Get\+Translation}\hspace{0.3cm}{\ttfamily  [get]}\label{interface_win_form_animation2_d_1_1_i_transform_state_a6b52b857e583f1524e339f87102d6050}
+
+\begin{DoxyCompactList}\small\item\em Get the translation part of the matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Подробное описание}
+Implement this when class allows local matrix transforms. (\doxyref{Entity}{стр.}{class_win_form_animation2_d_1_1_entity}, Camera) 
+

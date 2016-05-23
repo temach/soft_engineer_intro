@@ -1,0 +1,60 @@
+\subsection{Формат Collada (.dae)}
+Collada — это формат, разработанный для обмена  информацией между 3D приложениями.
+Управляется некоммерческой организацией Khronos Group. Collada использует открытый стандарт XML для обмена форматами, которые в противном случае были бы несовместимы. Collada был задуман как промежуточный формат для переноса файлов.
+Реализована поддержка в таких программах, как Maya, 3ds Max, Blender.
+Ниже приведен пример описания квадрата в формате collada:
+\begin{scriptsize}
+\begin{verbatim}
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <unit name="meter" meter="1"/>
+    <up_axis>X_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_geometries>
+    <geometry id="Plane_001-mesh" name="Plane.001">
+      <mesh>
+        <source id="Plane_001-mesh-positions">
+          <float_array id="Plane_001-mesh-positions-array" count="12">-1 -1 0 1 -1 0 -1 1 0 1 1 0</float_array>
+          <technique_common>
+            <accessor source="#Plane_001-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Plane_001-mesh-normals">
+          <float_array id="Plane_001-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Plane_001-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <polylist count="2">
+          <input semantic="VERTEX" source="#Plane_001-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Plane_001-mesh-normals" offset="1"/>
+          <vcount>3 3 </vcount>
+          <p>1 0 3 0 2 0 0 0 1 0 2 0</p>
+        </polylist>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Plane_001" name="Plane_001" type="NODE">
+        <matrix sid="transform">69.99999 0 0 0 0 5.28485e-6 -69.99999 0 0 69.99999 5.28485e-6 0 0 0 0 1</matrix>
+        <instance_geometry url="#Plane_001-mesh" name="Plane_001"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
+\end{verbatim}
+\end{scriptsize}

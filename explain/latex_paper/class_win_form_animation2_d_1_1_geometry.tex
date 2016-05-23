@@ -1,0 +1,29 @@
+\subsection{Класс Geometry}
+\label{class_win_form_animation2_d_1_1_geometry}\index{Geometry@{Geometry}}
+
+
+Stores info on extra geometry of the entity, bones that is.  
+
+
+\subsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Geometry} (I\+List$<$ Mesh $>$ scene\+\_\+meshes, Node nd, Bone\+Node armature)\label{class_win_form_animation2_d_1_1_geometry_abd05402398b233a02784515ecd0d329e}
+
+\begin{DoxyCompactList}\small\item\em Build geometry data for node (usually use only for one of the children of scene.\+Root\+Node) \end{DoxyCompactList}\item 
+double {\bf Find\+Average\+Bone\+Length} (Bone\+Node nd)\label{class_win_form_animation2_d_1_1_geometry_a5123f7b2e79b4ce84822970ed6538855}
+
+\begin{DoxyCompactList}\small\item\em For the length of final children bones. Just use average length. \end{DoxyCompactList}\item 
+void {\bf Update\+Bone\+Positions} (Bone\+Node nd)\label{class_win_form_animation2_d_1_1_geometry_afadeaea17a909ca4f78a559ceb1d044b}
+
+\begin{DoxyCompactList}\small\item\em Snap the render positions of bones, to deformations in the skeleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+Dictionary$<$ string, Bone\+Bounds $>$ {\bf \+\_\+bone\+\_\+id2triangle} = new Dictionary$<$string,Bone\+Bounds$>$()\label{class_win_form_animation2_d_1_1_geometry_a761090d49c4ce3b88463957f76cefcdb}
+
+\begin{DoxyCompactList}\small\item\em Bone name matched up with the triangle to render. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Подробное описание}
+Stores info on extra geometry of the entity, bones that is. 

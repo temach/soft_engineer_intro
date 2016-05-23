@@ -1,8 +1,28 @@
 %% Copyright 2004 Vjacheslav A. Fyodorov
-%% Newer copyright 2016 Abramov A. Mihailovich
 
-\NeedsTeXFormat{LaTeX2e} \ProvidesClass{hse-tech-spec}[2016/10/12 a4 hse university technical specification
-format based on eskd (tematibr@gmail.com)]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\NeedsTeXFormat{LaTeX2e} \ProvidesClass{eskd}[2004/10/12 a4 eskd
+format (V.Fyodorov@tltsu.ru)]
 
 \newif\ifeskd@twoside
 \eskd@twosidefalse
@@ -52,7 +72,7 @@ format based on eskd (tematibr@gmail.com)]
 \RequirePackage{ifthen}
 \RequirePackage{fancyhdr}
 
-%\RequirePackage{pscyr}
+\RequirePackage{pscyr}
 \renewcommand{\rmdefault}{far}
 
 \RequirePackage[left=24mm,right=11mm%
@@ -91,15 +111,15 @@ format based on eskd (tematibr@gmail.com)]
           % artem added 1 line below
           \put(0,0){\line(1,0){145}}
           \put(12.5,9.5){\makebox(0,0){\itshape
-              \textar{п≤п╫п╡. \textnumero\ п©п╬п╢п╩.}}}
+              \textar{Инв. \textnumero \ подл.}}}
           \put(42.5,9.5){\makebox(0,0){\itshape
-              \textar{п÷п╬п╢п©. п╦ п╢п╟я┌п╟}}}
+              \textar{Подп. и дата}}}
           \put(72.5,9.5){\makebox(0,0){\itshape
-              \textar{п▓п╥п╟п╪. п╦п╫п╡. \textnumero}}}
+              \textar{Взам. инв. \textnumero}}}
           \put(97.5,9.5){\makebox(0,0){\itshape
-              \textar{п≤п╫п╡. \textnumero\ п╢я┐п╠п╩.}}}
+              \textar{Инв. \textnumero \ дубл.}}}
           \put(127.5,9.5){\makebox(0,0){\itshape
-              \textar{п÷п╬п╢п©. п╦ п╢п╟я┌п╟}}}
+              \textar{Подп. и дата}}}
                                 %
         \end{picture}%
         \end{rotate}
@@ -209,8 +229,9 @@ format based on eskd (tematibr@gmail.com)]
   %     Форма 2\ifeskd@twoside б\else a\fi}}
   \newsavebox{\eskd@myhoriz@signature}
   \savebox{\eskd@myhoriz@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
+  \setlength{\headheight}{25.2pt}
   \fancypagestyle{myhorizontaltable}{%
-  \fancyhf{}
+  % \fancyhf{}
   \fancyhead[L]{%
     \unitlength 1mm
     \begin{picture}(0,0)(3,-6)
@@ -228,8 +249,11 @@ format based on eskd (tematibr@gmail.com)]
       %   \end{picture}}
     \end{picture}
     }
+    \fancyhead[C]{\large{\bfseries\thepage \\ \textbf{RU.17701729.509000 T3 01-1}}}
+  % \fancyhead[R]{\fancyplain{}{\bfseries\thepage}}
   \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}}
+  \renewcommand{\footrulewidth}{0pt}
+  }
 }
 
 
@@ -240,7 +264,7 @@ format based on eskd (tematibr@gmail.com)]
   \newsavebox{\eskd@myvert@signature}
   \savebox{\eskd@myvert@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
   \fancypagestyle{myverticaltable}{%
-  \fancyhf{}
+  % \fancyhf{}
   \fancyhead[L]{%
     \unitlength 1mm
     \begin{picture}(0,0)(3,-6)
@@ -266,10 +290,10 @@ format based on eskd (tematibr@gmail.com)]
 \newcommand{\make@eskd@common@style}{%
   \newsavebox{\eskd@common@list}
   \savebox{\eskd@common@list}{\itshape
-    \textar{\ifeskd@twoside п║я┌я─.\else п⌡п╦я│я┌\fi}}
+    \textar{\ifeskd@twoside Стр.\else Лист\fi}}
   \newsavebox{\eskd@common@gost}
-  % \savebox{\eskd@common@gost}{\scriptsize\textar{п⌠п·п║п╒ 2.104-68
-  %     п╓п╬я─п╪п╟ 2\ifeskd@twoside п╠\else a\fi}}
+  % \savebox{\eskd@common@gost}{\scriptsize\textar{ГОСТ 2.104-68
+  %     Форма 2\ifeskd@twoside б\else a\fi}}
   \newsavebox{\eskd@common@signature}
   \savebox{\eskd@common@signature}{{\inputencoding{\eskdencoding}\eskd@ii}}
   \fancypagestyle{common}{%
@@ -321,21 +345,21 @@ format based on eskd (tematibr@gmail.com)]
   \savebox{\eskd@first@text}{%
     \unitlength 1mm
     \begin{picture}(0,0)(0,0)
-      % \put(185,-1){\makebox(0,0)[rt]{\scriptsize п⌠п·п║п╒ 2.104-68 п╓п╬я─п╪п╟ 2}}
-      \put(3.5,27.5){\makebox(0,0){\footnotesize\itshape п≤п╥п╪.}}
-      \put(12,27.5){\makebox(0,0){\itshape п⌡п╦я│я┌}}
-      \put(28.5,27.5){\makebox(0,0){\itshape\textnumero\ п╢п╬п╨я┐п╪.}}
-      \put(47.5,27.5){\makebox(0,0){\itshape п÷п╬п╢п©.}}
-      \put(60,27.5){\makebox(0,0){\small\itshape п■п╟я┌п╟}}
-      \put(8.5,22.5){\makebox(0,0){\itshape п═п╟п╥я─п╟п╠.}}
-      \put(8.5,17.5){\makebox(0,0){\itshape п÷я─п╬п╡.}}
-      \put(8.5,7.5){\makebox(0,0){\itshape п². п╨п╬п╫я┌я─.}}
-      \put(8.5,2.5){\makebox(0,0){\itshape пёя┌п╡.}}
-      \put(142.5,22.5){\makebox(0,0){\itshape п⌡п╦я┌.}}
+      % \put(185,-1){\makebox(0,0)[rt]{\scriptsize ГОСТ 2.104-68 Форма 2}}
+      \put(3.5,27.5){\makebox(0,0){\footnotesize\itshape Изм.}}
+      \put(12,27.5){\makebox(0,0){\itshape Лист}}
+      \put(28.5,27.5){\makebox(0,0){\itshape\textnumero\ докум.}}
+      \put(47.5,27.5){\makebox(0,0){\itshape Подп.}}
+      \put(60,27.5){\makebox(0,0){\small\itshape Дата}}
+      \put(8.5,22.5){\makebox(0,0){\itshape Разраб.}}
+      \put(8.5,17.5){\makebox(0,0){\itshape Пров.}}
+      \put(8.5,7.5){\makebox(0,0){\itshape Н. контр.}}
+      \put(8.5,2.5){\makebox(0,0){\itshape Утв.}}
+      \put(142.5,22.5){\makebox(0,0){\itshape Лит.}}
       \put(157.5,22.5){\makebox(0,0){\itshape
-          \ifeskd@twoside п║я┌я─.\else п⌡п╦я│я┌\fi}}
+          \ifeskd@twoside Стр.\else Лист\fi}}
       \put(175,22.5){\makebox(0,0){\itshape
-          \ifeskd@twoside п║я┌я─п╟п╫п╦я├\else п⌡п╦я│я┌п╬п╡\fi}}
+          \ifeskd@twoside Страниц\else Листов\fi}}
 
     \end{picture}
     }
@@ -393,11 +417,11 @@ format based on eskd (tematibr@gmail.com)]
 
 \newcommand{\make@eskd@title@style}{%
   \newsavebox{\eskd@title@text}
-  \savebox{\eskd@title@text}{\scriptsize\textar{п╓. 1288}}
+  \savebox{\eskd@title@text}{\scriptsize\textar{Ф. 1288}}
   \newsavebox{\eskd@agr}
-  \savebox{\eskd@agr}{\usefont{T2A}{far}{b}{n}\Large п║п╬пЁп╩п╟я│п╬п╡п╟п╫п╬}
+  \savebox{\eskd@agr}{\usefont{T2A}{far}{b}{n}\Large Согласовано}
   \newsavebox{\eskd@appr}
-  \savebox{\eskd@appr}{\usefont{T2A}{far}{b}{n}\Large пёя┌п╡п╣я─п╤п╢п╟я▌}
+  \savebox{\eskd@appr}{\usefont{T2A}{far}{b}{n}\Large Утверждаю}
   \fancypagestyle{title}{%
     \fancyhf{}
     \fancyhead[L]{%
@@ -581,14 +605,14 @@ format based on eskd (tematibr@gmail.com)]
 \newcommand{\eskdListOfChanges}{\newpage
 {\small\noindent
 \begin{tabular}{|c|*{7}{p{1.5cm}|}c|c|}
-  \multicolumn{10}{c}{\Large\bf п⌡п╦я│я┌ я─п╣пЁп╦я│я┌я─п╟я├п╦п╦ п╦п╥п╪п╣п╫п╣п╫п╦п╧}\\\hline
-& \multicolumn{4}{c|}{п²п╬п╪п╣я─п╟ п╩п╦я│я┌п╬п╡
-(я│я┌я─п╟п╫п╦я├)}&&&&&\\\cline{2-5}
-п≤п╥п╪.&п╦п╥\-п╪п╣\-п╫п╣п╫\-п╫я▀я┘&п╥п╟\-п╪п╣\-п╫п╣п╫\-п╫я▀я┘&п╫п╬\-п╡я▀я┘&%
-п╟п╫\-п╫я┐\-п╩п╦\-я─п╬\-п╡п╟п╫\-п╫я▀я┘&
-п▓я│п╣пЁп╬ п╩п╦я│я┌п╬п╡ (я│я┌я─п╟п╫п╦я├)
-п╡ п╢п╬п╨я┐п╪.&\No\ п╢п╬п╨я┐п╪.&п▓я┘п╬\-п╢я▐\-я┴п╦п╧ \No\
-я│п╬п©я─п╬п╡п╬п╢п╦я┌п╣п╩я▄п╫п╬пЁп╬ п╢п╬п╨я┐п╪. п╦ п╢п╟я┌п╟&п÷п╬п╢п©п╦я│я▄&п■п╟я┌п╟\\\hline
+  \multicolumn{10}{c}{\Large\bf Лист регистрации изменений}\\\hline
+& \multicolumn{4}{c|}{Номера листов
+(страниц)}&&&&&\\\cline{2-5}
+Изм.&из\-ме\-нен\-ных&за\-ме\-нен\-ных&но\-вых&%
+ан\-ну\-ли\-ро\-ван\-ных&
+Всего листов (страниц)
+в докум.&\No\ докум.&Вхо\-дя\-щий \No\
+сопроводительного докум. и дата&Подпись&Дата\\\hline
 \vbox{\vspace{\eskdheight mm}\vspace{-6cm}}&&&&&&&&&\\\hline
 \end{tabular}
 }
@@ -617,7 +641,7 @@ format based on eskd (tematibr@gmail.com)]
   % \thispagestyle{myhoriz}\set@eskd@bottom{30mm}
   \inputencoding{\eskdencoding}
   \set@eskd@bottom{70mm}
-  \pagestyle{common}
+  % \pagestyle{common}
 
   %\renewcommand{\make@eskd@border}{}
   %\renewcommand{\make@eskd@vertical@frame}{}

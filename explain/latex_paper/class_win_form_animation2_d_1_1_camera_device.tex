@@ -1,0 +1,39 @@
+\subsection{Класс Camera\+Device}
+\label{class_win_form_animation2_d_1_1_camera_device}\index{Camera\+Device@{Camera\+Device}}
+
+
+Maintains camera abstraction. Allows support for orbiting, free fly and even 2D camera.  
+
+
+\subsubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Camera\+Device} (Matrix4 opengl\+\_\+init\+\_\+mat)\label{class_win_form_animation2_d_1_1_camera_device_a59ce26ab0cd14b001e61b428cbbd3993}
+
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+Vector3 {\bf Convert\+Screen2\+World\+Coordinates} (Point screen\+\_\+coords)\label{class_win_form_animation2_d_1_1_camera_device_ac7ad419940551e2a63d36549481ff424}
+
+\begin{DoxyCompactList}\small\item\em Get the mouse position and calculate the world coordinates based on the screen coordinates. \end{DoxyCompactList}\item 
+Matrix4 {\bf Matrix\+To\+Open\+GL} ()\label{class_win_form_animation2_d_1_1_camera_device_a708b9cba847463c03fc39aa0e6a8e51b}
+
+\begin{DoxyCompactList}\small\item\em Get the camera matrix to be uploaded to drawing 2D. \end{DoxyCompactList}\item 
+void {\bf On\+Mouse\+Move} (int x, int y)\label{class_win_form_animation2_d_1_1_camera_device_a91b06ea84daf2da1d561b318a0b030e3}
+
+\begin{DoxyCompactList}\small\item\em Respond to mouse events. \end{DoxyCompactList}\item 
+void {\bf Scroll} (float scroll)\label{class_win_form_animation2_d_1_1_camera_device_ab68f5c2e2b82440495f6735ec5b4a389}
+
+\begin{DoxyCompactList}\small\item\em Zoom in/out of the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsubsection*{Свойства}
+\begin{DoxyCompactItemize}
+\item 
+Cam\+Mode {\bf \+\_\+cam\+\_\+mode}\hspace{0.3cm}{\ttfamily  [get]}\label{class_win_form_animation2_d_1_1_camera_device_a162958083b16cbc267e6f23c7392e2a5}
+
+\begin{DoxyCompactList}\small\item\em Return the currently active camera mode. \end{DoxyCompactList}\item 
+Vector3 {\bf Get\+Translation}\hspace{0.3cm}{\ttfamily  [get]}\label{class_win_form_animation2_d_1_1_camera_device_a6b52b857e583f1524e339f87102d6050}
+
+\begin{DoxyCompactList}\small\item\em Get the translation part of the camera matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Подробное описание}
+Maintains camera abstraction. Allows support for orbiting, free fly and even 2D camera. 
+
