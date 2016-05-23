@@ -1,18 +1,29 @@
 \subsection{Класс Mesh\+Draw}
 \label{class_win_form_animation2_d_1_1_mesh_draw}\index{Mesh\+Draw@{Mesh\+Draw}}
+
+
+Mesh rendering using V\+B\+Os. Based on {\tt http\+://www.\+opentk.\+com/files/\+T08\+\_\+\+V\+B\+O.\+cs}  
+
+
 \subsubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
 {\bf Mesh\+Draw} (Mesh mesh, I\+List$<$ Material $>$ materials)
-\item 
+\begin{DoxyCompactList}\small\item\em Uploads the data to the G\+PU. \end{DoxyCompactList}\item 
+void {\bf Begin\+Modify\+Vertex\+Data} (out Int\+Ptr data, out int qty\+\_\+vertices)\label{class_win_form_animation2_d_1_1_mesh_draw_aa0c07f4d1ee0f383a56b62bc2685014b}
+
+\begin{DoxyCompactList}\small\item\em Call this to get a pointer to Open\+GL private memory buffer. \end{DoxyCompactList}\item 
+void {\bf End\+Modify\+Vertex\+Data} ()\label{class_win_form_animation2_d_1_1_mesh_draw_a79c6f246eeb35bf63a33e850ad9038f0}
+
+\begin{DoxyCompactList}\small\item\em Call this when done working with Open\+GL memory. This uploads it back into Open\+GL. \end{DoxyCompactList}\item 
 void {\bf Render\+V\+BO} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Render mesh from G\+PU memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsubsection{Подробное описание}
-Mesh rendering using V\+B\+Os. 
+Mesh rendering using V\+B\+Os. Based on {\tt http\+://www.\+opentk.\+com/files/\+T08\+\_\+\+V\+B\+O.\+cs} 
 
-Based on {\tt http\+://www.\+opentk.\+com/files/\+T08\+\_\+\+V\+B\+O.\+cs} 
+
 
 \subsubsection{Конструктор(ы)}
 \index{Win\+Form\+Animation2\+D\+::\+Mesh\+Draw@{Win\+Form\+Animation2\+D\+::\+Mesh\+Draw}!Mesh\+Draw@{Mesh\+Draw}}
@@ -39,5 +50,5 @@ Uploads the data to the G\+PU.
 )}\label{class_win_form_animation2_d_1_1_mesh_draw_a7735f3e5b99af7ffb9e8343a36c3d688}
 
 
-Render mesh from G\+PU memory. The pipeline is restored afterwards. 
+Render mesh from G\+PU memory. 
 
