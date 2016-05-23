@@ -7,11 +7,12 @@ encoding=utf8
 
 % Packages required by doxygen
 \usepackage[export]{adjustbox} % also loads graphicx
-\usepackage[draft]{graphicx}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{makeidx}
+\usepackage{caption}
+\usepackage{graphicx}
 
 % NLS support packages
 \usepackage[T2A]{fontenc}
@@ -57,9 +58,9 @@ encoding=utf8
 
 % change style of titles in \section{}
 \usepackage{titlesec}
-\titleformat{\section}[hang]{\Large\bfseries\center}{\thetitle.}{1em}{}
-\titleformat{\subsection}[hang]{\large\normalfont\raggedright}{\thetitle.}{1em}{\underline}
-\titleformat{\subsubsection}[hang]{\normalsize\normalfont\raggedright}{\thetitle.}{1pt}{}
+\titleformat{\section}[hang]{\huge\bfseries\center}{\thetitle.}{1em}{}
+\titleformat{\subsection}[hang]{\Large\normalfont\raggedright}{\thetitle.}{1em}{\underline}
+\titleformat{\subsubsection}[hang]{\large\normalfont\raggedright}{\thetitle.}{1pt}{}
 
 % Packages for text layout in normal mode
 % \usepackage[parfill]{parskip} % автоматом делает пустые линии между параграфами, там где они есть в тексте
@@ -162,11 +163,13 @@ encoding=utf8
 \input{terminology}
 
 \newpage
-\section{Приложение 2. Список используемой литературы}
+\section{Приложение 2. Схема интерфейса программы}
+\input{interface}
+
+\newpage
+\section{Приложение 3. Список используемой литературы}
 \input{used_literature}
 
-% \newpage
-%\section{Приложение 3. Изображение пользовательского интерфейса.}
 
 % Index
 \newpage
